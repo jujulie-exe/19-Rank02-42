@@ -14,13 +14,12 @@ int	ft_strchrdup(char *str, char c, int index)
 	return (1);
 }
 
-void	ft_intr(char *s1, char *s2)
+void	ft_inter(char *s1, char *s2)
 {
-	int 	i;
+	int	i;
 	int	y;
 
 	i = 0;
-	y = 0;
 	while (s1[i] != '\0')
 	{
 		y = 0;
@@ -40,10 +39,10 @@ void	ft_intr(char *s1, char *s2)
 	}
 }
 
-int main(int argv, char **argc)
+int	main(int argc, char **argv)
 {
-	if(argv == 3)
-		ft_intr(argc[1], argc[2]);
+	if (argc == 3)
+		ft_inter(argv[1], argv[2]);
 	write(1, "\n", 1);
-	return (0);
+	return(0);
 }

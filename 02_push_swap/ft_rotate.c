@@ -17,20 +17,9 @@ void	ra(t_list **head)
 	}
 }
 
-void	ra(t_list **head)
+void	rd(t_list **head)
 {
-	t_list	*first;
-	t_list	*last;
-
-	if (*head && (*head)->next != *head)
-	{
-		first = *head;
-		last = (*head)->prev;
-		*head = (*head)->next;
-		first->next = NULL;
-		first->prev = last;
-		last->next = first;
-	}
+	ra(head);
 }
 
 void rr(t_list **head_a, t_list **head_b)

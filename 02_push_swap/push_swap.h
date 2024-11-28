@@ -27,6 +27,7 @@ void	rr(t_list **head_a, t_list **head_b);
 
 t_list	*lstnew(int value);
 void	lstadd(t_list **head, int value);
+void	lstadd_head(t_list **head, int value);
 void	lstdelone(t_list **head, t_list *node);
 void	lstclear(t_list **head);
 

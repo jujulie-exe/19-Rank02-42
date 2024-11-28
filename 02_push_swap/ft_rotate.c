@@ -10,14 +10,15 @@ void	ra(t_list **head)
 	{
 		first = *head;
 		last = (*head)->prev;
-		*head = (*head)->next;
-		first->next = NULL;
-		first->prev = last;
 		last->next = first;
+		first->prev = last;
+		*head = first->next;
+		(*head)->prev = last;
+		first->next = *head;       
 	}
 }
 
-void	rd(t_list **head)
+void	rb(t_list **head)
 {
 	ra(head);
 }

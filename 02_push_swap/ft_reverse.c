@@ -3,22 +3,24 @@
 
 void	rra(t_list **head)
 {
-	t_list *last;
-	t_list *second_last;
+	t_list *second;
+	t_list *first_last;
+	t_list	*end;
 
-	if(*head && (*head)->next != head)
+	if(*head && (*head)->next != *head)
 	{
-		last = (*head)->prev;
-		second_last = last->prev;
-		second_last->next = *head;
-		(*head)->prev = second_last;
-		last->prev = NULL;
-		last->next = (*head);
-		(*head)->prev = last;
-		head = last;
+		first_last = (*head)->prev;
+		*head = first_last->next;
+		second = (*head)->next;
+		end = (*head)->prev;
+		(*head)->next = second->next;
+		second->next->prev = *head;
+		second->next = *head;
+		(*head)->prev = second;
+		end->next = second;
+		second->prev = end;
 	}
 }
-
 void	rrb(t_list **head)
 {
 	rra(head);

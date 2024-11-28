@@ -18,6 +18,31 @@ t_list	*lstnew(int value)
 	new_node->prev = new_node;
 	return (new_node);
 }
+void	lstadd_head(t_list **head, int value)
+{
+	t_list	*new_node;
+	t_list	*tail;
+
+	new_node = lstnew(value);
+	if (new_node == NULL)
+		return ;
+	if (*head == NULL)
+	{
+		*head = new_node;
+		new_node->next = new_node;
+		new_node->prev = new_node;
+	}
+
+	else
+	{
+		tail = (*head)->prev;
+		tail->next = new_node;
+		new_node->prev = tail;
+		new_node->next = *head;
+		(*head)->prev = new_node;
+		*head = new_node;
+	}
+}
 
 void	lstadd(t_list **head, int value)
 {
@@ -28,7 +53,11 @@ void	lstadd(t_list **head, int value)
 	if (new_node == NULL)
 		return ;
 	if (*head == NULL)
+	{
 		*head = new_node;
+		new_node->next = new_node;
+		new_node->prev = new_node;
+	}
 	else
 	{
 		tail = (*head)->prev;

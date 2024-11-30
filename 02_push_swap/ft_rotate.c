@@ -1,22 +1,26 @@
 
 #include "push_swap.h"
 
-void	ra(t_list **head)
+void ra(t_list **head)
 {
+	t_list	*current;
 	t_list	*first;
-	t_list	*last;
-
+	int	tmp;
+	
 	if (*head && (*head)->next != *head)
 	{
 		first = *head;
-		last = (*head)->prev;
-		last->next = first;
-		first->prev = last;
-		*head = first->next;
-		(*head)->prev = last;
-		first->next = *head;       
+		tmp = first->value;
+		current = first;
+		while (current->next != *head)
+		{
+			current->value = current->next->value;
+			current = current->next;
+		}
+		current->value = tmp;
 	}
 }
+
 
 void	rb(t_list **head)
 {

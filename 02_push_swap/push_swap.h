@@ -3,6 +3,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stddef.h>
+#include <limits.h>
+#include <stddef.h>
+#include "/home/jujulie/Documents/libft/libft.h"
+
 typedef	struct s_list
 {
 	int		value;
@@ -30,5 +34,10 @@ void	lstadd(t_list **head, int value);
 void	lstadd_head(t_list **head, int value);
 void	lstdelone(t_list **head, t_list *node);
 void	lstclear(t_list **head);
+int	ft_lenstck(t_list *head);
+void	ft_stack_a(t_list **head_a, char **argv);
+
+int	atoi(const char	*str);
+char	**ft_split(char const *s, char c);
 
 #endif

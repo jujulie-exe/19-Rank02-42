@@ -28,9 +28,9 @@ void	lstadd_head(t_list **head, int value)
 		return ;
 	if (*head == NULL)
 	{
-		*head = new_node;
 		new_node->next = new_node;
 		new_node->prev = new_node;
+		*head = new_node;
 	}
 
 	else

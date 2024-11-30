@@ -5,34 +5,28 @@
 void	pa(t_list **head_a, t_list **head_b)
 {
 	int	tmp;
-	t_list	*new_head;
-
 	
 	if(*head_b == NULL)
 		return ;
 	tmp = (*head_b)->value;
-	lstadd_head(head_a, tmp);
-	new_head = *head_b;
+	if (*head_a == NULL)
+		*head_a = lstnew(tmp);
+	else
+		lstadd_head(head_a, tmp);
 	lstdelone(head_b, *head_b);
 }
 
 
 void	pb(t_list **head_b, t_list **head_a)
 {
-	t_list	*to_move;
-	t_list	*last_a;
-
-	if (*head_a == NULL)
+	int	tmp;
+	
+	if(*head_a == NULL)
 		return ;
-	to_move = *head_a;
-	if((*head_a)->next == *head_a)
-	{
-		*head_a = NULL;
-	}
+	tmp = (*head_a)->value;
+	if (*head_b == NULL)
+		*head_b = lstnew(tmp);
 	else
-	{
-		last_a = (*head_a)->prev;
-		(*head_a)->prev = last_a;
-		last_a->next = *head_a;
-	}
+		lstadd_head(head_b, tmp);
+	lstdelone(head_a, *head_b);
 }

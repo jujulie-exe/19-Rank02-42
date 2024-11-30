@@ -1,5 +1,5 @@
 
-#include "push_swap.h"
+/*#include "push_swap.h"
 
 void	ft_printf_list(t_list *head)
 {
@@ -21,8 +21,9 @@ int	main(int argc, char **argv)
 {
 	t_list	*head;
 	t_list	*head_b;
+	head = NULL;
 	head = lstnew(-1);
-	head_b = lstnew(9);
+	head_b = NULL;
 
 	
 	lstadd(&head, 0);
@@ -48,13 +49,31 @@ int	main(int argc, char **argv)
 	sa(&head);
 	ft_printf_list(head);
 	/////////////////PUSH//////////////////////////
-	printf("%s\n","-------SWAP-------");
+	printf("%s\n","----------PUSH----------");
 	
 	ft_printf_list(head);
+	pa(&head_b, &head);
+	pa(&head_b, &head);
+	pa(&head_b, &head);
+	pa(&head_b, &head);
+	pa(&head_b, &head);
+	pa(&head_b, &head);
+	pa(&head_b, &head);
+	pa(&head_b, &head);
+	pa(&head_b, &head);
+	pa(&head_b, &head);
+	pa(&head_b, &head);
+	pa(&head_b, &head);
+	pa(&head_b, &head);
+	pa(&head_b, &head);
+	pa(&head_b, &head);
+	pa(&head_b, &head);
 	pa(&head_b, &head);
 	printf("%s\n","DOPO L'USO DI PA LA MAIN STACK_A");
 	ft_printf_list(head);
 	printf("%s\n","head_b");
+	sb(&head_b);
+	rb(&head_b);
 	ft_printf_list(head_b);
 	printf("%s\n", "NON FOULT");
 	return (0);
@@ -62,4 +81,4 @@ int	main(int argc, char **argv)
 
 
 
-}
+}*/

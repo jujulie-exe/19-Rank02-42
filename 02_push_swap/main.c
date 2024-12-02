@@ -29,14 +29,17 @@ int	main(int argc, char **argv)
 		argv = ft_split(argv[1], ' ');
 	ft_stack_a(&a, argv);
 	n = ft_lenstck(a);
-	printf("%d", n);
+	printf("%d\n", n);
 	ft_printf_list(a);
-/*	if ( *qualcosa*)
+	printf("-----PRIMA----\n");
+	if (a != NULL)
 	{
 		if(ft_lenstck(a) == 2)
+			ft_two_short(&a);
 		if(ft_lenstck(a) == 3)
-			
-		else
-	}*/ 
+			ft_ts(&a);
+	}
+	printf("-----DOPO------\n");
+	ft_printf_list(a);
 
 }

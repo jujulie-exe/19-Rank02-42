@@ -5,7 +5,7 @@
 #include <stddef.h>
 #include <limits.h>
 #include <stddef.h>
-#include "/home/jujulie/Documents/libft/libft.h"
+#include <unistd.h>
 
 typedef	struct s_list
 {
@@ -39,5 +39,25 @@ void	ft_stack_a(t_list **head_a, char **argv);
 
 int	atoi(const char	*str);
 char	**ft_split(char const *s, char c);
+
+
+void	ft_ts(t_list **head);
+void	ft_two_short(t_list **head);
+
+void	exe_sa(t_list **head);
+void	exe_ra(t_list **head);
+void	exe_rra(t_list **head);
+void	exe_pa(t_list **head_a, t_list **head_b);
+
+void	exe_sb(t_list **head);
+void	exe_rb(t_list **head);
+void	exe_rrb(t_list **head);
+void	exe_pb(t_list **head_b, t_list **head_a);
+
+void	exe_rrr(t_list **head_a, t_list **head_b);
+void	exe_ss(t_list **head_a, t_list **head_b);
+void	exe_rr(t_list **head_a, t_list **head_b);
+	
+
 
 #endif

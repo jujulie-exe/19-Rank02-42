@@ -57,6 +57,10 @@ void	exe_pb(t_list **head_b, t_list **head_a);
 void	exe_rrr(t_list **head_a, t_list **head_b);
 void	exe_ss(t_list **head_a, t_list **head_b);
 void	exe_rr(t_list **head_a, t_list **head_b);
+
+void	insertion_short(t_list **head_a, t_list **head_b);
+int	empty(t_list **head);
+long	min(t_list **head);
 	
 
 

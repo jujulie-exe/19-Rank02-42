@@ -1,7 +1,6 @@
 
 #include "push_swap.h"
 
-
 void	pa(t_list **head_a, t_list **head_b)
 {
 	int	tmp;
@@ -28,5 +27,5 @@ void	pb(t_list **head_b, t_list **head_a)
 		*head_b = lstnew(tmp);
 	else
 		lstadd_head(head_b, tmp);
-	lstdelone(head_a, *head_b);
+	lstdelone(head_a, *head_a);
 }

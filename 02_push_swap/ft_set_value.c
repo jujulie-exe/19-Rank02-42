@@ -6,7 +6,7 @@
 /*   By: jfranco <jfranco@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 15:31:52 by jfranco           #+#    #+#             */
-/*   Updated: 2024/12/03 17:44:56 by jfranco          ###   ########.fr       */
+/*   Updated: 2024/12/04 11:08:04 by jfranco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,5 +79,52 @@ void	set_target(t_list **head_a, t_list **head_b)
 	}
 }
 
+void	set_price(t_list **head_a, t_list **head_b)
+{
+	int	len_a;
+	int len_b;
+	t_list	*current_b
+	
+	len_a = ft_lenstck(head_a);
+	len_b = ft_lenstck(head_b);
+	if (head_a == NULL || head_b == NULL || *head_a == NULL || *head_b == NULL)
+		return ;
+	current_b = *head_b;
+	while (1)
+	{
+		current_b->push_price = b->index;
+		if (!(current->above_median))
+				current_b->push_price = len_b - (b->index);
+		if (current_b->target_node->above_median)
+			current_b->push_price += b->target_node->index;
+		else 
+			current_b->push_price += len_a - (current_b->target_node->index);
+		if(current_b = *head_b)
+			break ;
+		current = current->next;
 
+	}
+}
 
+void	set_cheapest(t_list **head_b)
+{
+	long	match;
+	t_list	*match_node;
+	t_list	*current_b;
+
+	if (head_a == NULL || head_b == NULL || *head_a == NULL || *head_b == NULL)
+		return ;
+	match = LONG_MAX;
+	while (1)
+	{
+		if (current->push_price < match)
+		{
+			match = current->push_price;
+			match_node = current_b
+		}
+		if (current == *head)
+			break ;
+		current_b = current->next;
+	}
+	match_node->cheapset = true;
+}

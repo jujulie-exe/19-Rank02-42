@@ -9,11 +9,9 @@ void	ft_stack_a(t_list **head_a, char **argv)
 	i = 0;
 	while (argv[i])
 	{
-		n = atoi(argv[i]);
+		n = atol(argv[i]);
 		if (n > INT_MAX || n < INT_MIN)
-		{
 			return ;
-		}
 		if (*head_a == NULL)
 			*head_a = lstnew((int)(n));
 		else
@@ -22,12 +20,18 @@ void	ft_stack_a(t_list **head_a, char **argv)
 
 	}
 	// mettere if per la verifica della stringa isdigit
+	// mettere il controllo di ripetizione
+	// mettere il free per argv
 	
 }
 
 void init(t_list **head_a, t_list **head_b)
 {
-
+	set_index(head_a);
+	set_index(head_b);
+	set_target(head_a, head_b);
+	set_price(head_a, head_b);
+	set_cheapest(head_b);
 }
 
 

@@ -43,7 +43,7 @@ void	lstclear(t_list **head);
 int	ft_lenstck(t_list *head);
 void	ft_stack_a(t_list **head_a, char **argv);
 
-int	atol(const char	*str);
+long	atol(const char	*str);
 char	**ft_split(char const *s, char c);
 
 

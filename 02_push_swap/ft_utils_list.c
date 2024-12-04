@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_utils_list.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jfranco <jfranco@student.s19.be>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/04 14:02:49 by jfranco           #+#    #+#             */
+/*   Updated: 2024/12/04 16:06:59 by jfranco          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 int	ft_lenstck(t_list *head)
@@ -21,12 +33,12 @@ int	ft_lenstck(t_list *head)
 	return (len);
 }
 
-t_list	*find_last_node(t_list **head)
+/*t_list	*find_last_node(t_list **head)
 {
 	t_list last_node;
 	last_node->(*head)->prev;
 	return (last_node);
-}
+}*/
 
 t_list	*find_smallest(t_list **head)
 {
@@ -53,12 +65,12 @@ t_list	*find_smallest(t_list **head)
 	return (smallest_node);
 }
 
-t_list *return_chepest(t_list **head)
+t_list *return_cheapest(t_list **head)
 {
 	t_list *current;
 
 	if (head == NULL || *head == NULL)
-		return ;
+		return (NULL);
 	current = (*head)->next;
 	while ((1))
 	{

@@ -13,27 +13,27 @@ void	ft_ts(t_list **head)
 
 	if(a > b && a > c)
 	{
-		exe_ra(head);
+		ra(head);
 		if ((*head)->value > (*head)->next->value)
-			exe_sa(head);
+			sa(head);
 	}
 	else if (c < b && c < a) // c piu piccolo
 	{
-		exe_sa(head);
-		exe_rra(head);
+		sa(head);
+		rra(head);
 
 	}
 	else if (b > a && b > c) // b piu grande
 	{
-		exe_sa(head);
-		exe_ra(head);
+		sa(head);
+		ra(head);
 	}
 	else if (b < c && b < a) //b piu piccolo
 	{
 		if (a < c)
-			exe_sa(head);
+			sa(head);
 		else 
-			exe_ra(head);
+			ra(head);
 	}
 }
 
@@ -47,5 +47,5 @@ void	ft_two_short(t_list **head)
 	if (a < b)
 		return ;
 	else if (b < a)
-		exe_sa(head);
+		sa(head);
 }

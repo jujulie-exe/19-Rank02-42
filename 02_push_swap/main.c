@@ -29,19 +29,19 @@ int	main(int argc, char **argv)
 		return (1);
 	if(argc == 2)
 		argv = ft_split(argv[1], ' ');
-	ft_stack_a(&a, argv);
+	ft_stack_init(&a, argv);
 	n = ft_lenstck(a);
 	printf("%d\n", n);
 	ft_printf_list(a);
 	printf("-----PRIMA----\n");
 	if (a != NULL)
 	{
-		if(ft_lenstck(a) == 2)
-			ft_two_short(&a);
+/*		if(ft_lenstck(a) == 2)2dd
+			ft_two_short(&a);*/
 		if(ft_lenstck(a) == 3)
 			ft_ts(&a);
 		else
-			insertion_short(&a, &b);
+			push_swap(&a, &b);
 	}
 	printf("-----DOPO------\n");
 	ft_printf_list(a);

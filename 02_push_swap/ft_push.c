@@ -13,6 +13,7 @@ void	pa(t_list **head_a, t_list **head_b)
 	else
 		lstadd_head(head_a, tmp);
 	lstdelone(head_b, *head_b);
+	write(1, "pa\n", 3);
 }
 
 
@@ -28,4 +29,5 @@ void	pb(t_list **head_b, t_list **head_a)
 	else
 		lstadd_head(head_b, tmp);
 	lstdelone(head_a, *head_a);
+	write(1, "pb\n",3);
 }

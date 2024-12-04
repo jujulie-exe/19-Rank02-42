@@ -6,6 +6,7 @@
 #include <limits.h>
 #include <stddef.h>
 #include <unistd.h>
+#include <stdbool.h>
 
 typedef	struct s_list
 {
@@ -49,11 +50,26 @@ char	**ft_split(char const *s, char c);
 
 void	ft_ts(t_list **head);
 void	ft_two_short(t_list **head);
+//*** ft_set_value.c ***
+void	set_index(t_list **head);
+t_list	*find_best_match(t_list **head_a, t_list *head_b);
+void	set_target(t_list **head_a, t_list **head_b);
+void	set_price(t_list **head_a, t_list **head_b);
+void	set_cheapest(t_list	**head_b);
+//** ft_utils_list.c ***
+int		ft_lenstck(t_list *head);
+t_list	*find_smallest(t_list **head);
+t_list	*return_cheapest(t_list **head);
+//** ft_init_.c ***
+void	ft_stack_init(t_list **head_a, char **argv);
+void	init(t_list **head_a, t_list **head_b);
+//** push_swap.c ***
+void	push_swap(t_list **head_a, t_list **head_b);
+void	rot_both_rev(t_list **head_a, t_list **head_b, t_list *cheapest, char a);
+void	end_rot(t_list **head, t_list *top, char n);
+void	move(t_list **head_a, t_list **head_b);
 
-void	insertion_short(t_list **head_a, t_list **head_b);
-int	empty(t_list **head);
-long	min(t_list **head);
-	
+
 
 
 #endif

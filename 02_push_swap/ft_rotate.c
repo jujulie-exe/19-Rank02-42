@@ -1,7 +1,7 @@
 
 #include "push_swap.h"
 
-void ra(t_list **head)
+void ra_exe(t_list **head)
 {
 	t_list	*current;
 	t_list	*first;
@@ -21,14 +21,22 @@ void ra(t_list **head)
 	}
 }
 
+void ra(t_list **head)
+{
+	ra_exe(head);
+	write(1, "ra\n", 3);
+}
+
 
 void	rb(t_list **head)
 {
-	ra(head);
+	ra_exe(head);
+	write(1, "rb\n", 3);
 }
 
 void rr(t_list **head_a, t_list **head_b)
 {
-	ra(head_a);
-	rb(head_b);
+	ra_exe(head_a);
+	ra_exe(head_b);
+	write(1, "rr\n", 3);
 }

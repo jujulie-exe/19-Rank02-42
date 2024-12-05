@@ -6,7 +6,7 @@
 /*   By: jfranco <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 18:07:35 by jfranco           #+#    #+#             */
-/*   Updated: 2024/12/05 18:09:32 by jfranco          ###   ########.fr       */
+/*   Updated: 2024/12/05 18:34:02 by jfranco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 void	exit_and_free(t_list **head, char **str)
 {
 	if (!(head == NULL || *head == NULL))
-		lstclear(head);
+		free_stack(head);
 	write(1, "Error\n", 6);
 	free_argv(str);
 	exit (0);
@@ -49,14 +49,12 @@ void	ft_check_double(t_list **head, char **argv)
 
 int	ft_isdigit(int ch)
 {
-	if (ch >= '0' && ch <= '9')
-	{
+	if (ch == '-' || ch == '+')
 		return (1);
-	}
+	else if (ch >= '0' && ch <= '9')
+		return (1);
 	else
-	{
 		return (0);
-	}
 }
 
 int ft_istrdigit(char *s)

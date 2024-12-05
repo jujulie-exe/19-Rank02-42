@@ -6,7 +6,7 @@
 /*   By: jfranco <jfranco@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 14:02:49 by jfranco           #+#    #+#             */
-/*   Updated: 2024/12/04 16:06:59 by jfranco          ###   ########.fr       */
+/*   Updated: 2024/12/05 14:25:55 by jfranco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,14 +71,14 @@ t_list *return_cheapest(t_list **head)
 
 	if (head == NULL || *head == NULL)
 		return (NULL);
-	current = (*head)->next;
+	current = (*head);
 	while ((1))
 	{
 		if (current->cheapest)
 			return (current);
+		current = current->next;
 		if (current == *head)
 			break ;
-		current = current->next;
 	}
 	return (NULL);
 }

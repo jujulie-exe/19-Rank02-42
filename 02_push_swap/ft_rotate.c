@@ -3,6 +3,11 @@
 
 void ra_exe(t_list **head)
 {
+	if (*head && (*head)->next != *head)
+	{
+		*head = (*head)->next;
+	}
+	/*
 	t_list	*current;
 	t_list	*first;
 	int	tmp;
@@ -18,7 +23,7 @@ void ra_exe(t_list **head)
 			current = current->next;
 		}
 		current->value = tmp;
-	}
+	}*/
 }
 
 void ra(t_list **head)

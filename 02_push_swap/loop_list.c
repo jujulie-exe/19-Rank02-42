@@ -68,7 +68,7 @@ void	lstadd(t_list **head, int value)
 	}
 }
 
-void	lstdelone(t_list **head, t_list *node)
+/*void	lstdelone(t_list **head, t_list *node)
 {
 	if (node == NULL || *head == NULL)
 		return ;
@@ -82,6 +82,29 @@ void	lstdelone(t_list **head, t_list *node)
 			*head = node->next;
 	}
 	free(node);
+}
+*/
+void lstdelone(t_list **head, t_list *to_delete)
+{
+    if (*head == NULL || to_delete == NULL)
+        return;
+
+    // Caso: lista con un solo elemento
+    if (to_delete == *head && (*head)->next == *head)
+    {
+        free(to_delete);
+        *head = NULL; // Aggiorna la testa a NULL
+        return;
+    }
+
+    // Aggiorna i puntatori per una lista circolare
+    if (to_delete == *head)
+        *head = to_delete->next; // Sposta la testa al nodo successivo
+
+    to_delete->prev->next = to_delete->next;
+    to_delete->next->prev = to_delete->prev;
+
+    free(to_delete);
 }
 
 void	lstclear(t_list **head)

@@ -67,7 +67,7 @@ void	init(t_list **head_a, t_list **head_b);
 void	push_swap(t_list **head_a, t_list **head_b);
 void	rot_both_rev(t_list **head_a, t_list **head_b, t_list *cheapest, char a);
 void	end_rot(t_list **head, t_list *top, char n);
-void	move(t_list **head_a, t_list **head_b);
+int	move(t_list **head_a, t_list **head_b);
 
 
 

@@ -6,7 +6,7 @@
 /*   By: jfranco <jfranco@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 14:08:39 by jfranco           #+#    #+#             */
-/*   Updated: 2024/12/04 14:08:52 by jfranco          ###   ########.fr       */
+/*   Updated: 2024/12/05 17:23:02 by jfranco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,25 +16,24 @@
 void	ft_stack_init(t_list **head_a, char **argv)
 {
 	int	i;
-	long	n;
+	long long	n;
 
 	i = 0;
 	while (argv[i])
 	{
+		if (!(ft_istrdigit(argv[i])))
+			exit_and_free(head_a, argv);
 		n = atol(argv[i]);
 		if (n > INT_MAX || n < INT_MIN)
-			return ;
+			exit_and_free(head_a, argv);
 		if (*head_a == NULL)
 			*head_a = lstnew((int)(n));
 		else
 			lstadd(head_a, (int)n);
+		ft_check_double(head_a, argv);
 		i++;
-
 	}
-	// mettere if per la verifica della stringa isdigit
-	// mettere il controllo di ripetizione
 	// mettere il free per argv
-	
 }
 
 void init(t_list **head_a, t_list **head_b)

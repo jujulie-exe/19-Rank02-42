@@ -45,5 +45,7 @@ int	main(int argc, char **argv)
 	}
 	printf("-----DOPO------\n");
 	ft_printf_list(a);
+	free_stack(&a);
+	free_argv(argv);
 
 }

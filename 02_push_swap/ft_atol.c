@@ -6,17 +6,17 @@
 /*   By: jfranco <jfranco@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 14:28:09 by jfranco           #+#    #+#             */
-/*   Updated: 2024/12/05 15:39:36 by jfranco          ###   ########.fr       */
+/*   Updated: 2024/12/05 17:05:46 by jfranco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-long	ft_atol(const char *str)
+long long	ft_atol(const char *str)
 {
-	size_t		i;
-	long		sign;
-	long		result;
+	size_t			i;
+	long long		sign;
+	long long		result;
 
 	i = 0;
 	result = 0;
@@ -34,6 +34,13 @@ long	ft_atol(const char *str)
 		i++;
 	while (str[i] != '\0' && str[i] >= '0' && str[i] <= '9')
 	{
+		if (result > (LLONG_MAX - (str[i] - '0')) / 10)
+		{
+			if (sign == 1)
+				return (LLONG_MAX);
+			else
+				return (LLONG_MIN);
+		}
 		result *= 10;
 		result += str[i] - '0';
 		i++;

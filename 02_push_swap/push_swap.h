@@ -68,7 +68,12 @@ void	push_swap(t_list **head_a, t_list **head_b);
 void	rot_both_rev(t_list **head_a, t_list **head_b, t_list *cheapest, char a);
 void	end_rot(t_list **head, t_list *top, char n);
 int	move(t_list **head_a, t_list **head_b);
-
+//** exit_and_free ***
+void	ft_check_double(t_list **head,char **argv);
+void	exit_and_free(t_list **head, char **argv);
+int	ft_istrdigit(char *s);
+void	free_argv(char **str);
+void	free_stack(t_list **head);
 
 
 

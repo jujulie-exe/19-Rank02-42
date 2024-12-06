@@ -38,7 +38,7 @@ t_list	*get_gap_node(t_list **head, int index)
 	t_list	*current;
 	int	i;
 
-	current == *head;
+	current = *head;
 	i = 0;
 	if (empty(head) == 0)
 		return (NULL);
@@ -80,7 +80,7 @@ void 	shell_short(t_list **head_a, t_list **head_b)
 
 	len_a = ft_lenstck(*head_a);
 	gap = len_a / 2;
-	if (!(empty))
+	if ((empty(head_a) == 0))
 		return ;
 	while (gap > 0)
 	{
@@ -106,7 +106,7 @@ void 	shell_short(t_list **head_a, t_list **head_b)
 		}
 		gap /= 2;
 	}
-	if ((is_sorted))
+	if (is_sorted(head_a) == 0)
 		insertion_short(head_a, head_b);
 
 

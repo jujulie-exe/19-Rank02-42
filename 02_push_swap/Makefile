@@ -15,7 +15,7 @@ NAME = push_swap
 CC = cc
 CFLAGS = -g3 -Wall -Wextra -Werror
 
-SRCS = ft_atol.c ft_exit_and_error.c ft_init_.c ft_push.c ft_reverse.c ft_rotate.c ft_set_value.c ft_short_algo.c ft_split.c ft_swap.c ft_utils_list.c loop_list.c main.c push_swap.c
+SRCS = ft_atol.c ft_exit_and_error.c ft_init_.c ft_push.c ft_reverse.c ft_rotate.c ft_set_value.c ft_short_algo.c ft_split.c ft_swap.c ft_utils_list.c loop_list.c main.c push_swap.c	ft_insertion_short.c
 
 OBJ = $(SRCS:.c=.o)
 

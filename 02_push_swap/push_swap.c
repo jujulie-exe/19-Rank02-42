@@ -79,7 +79,7 @@ void	push_swap(t_list **head_a, t_list **head_b)
 	len_a = ft_lenstck(*head_a);
 //	if (len_a == 5)
 //		shell_short(head_a, head_b);
-	//else
+//	else
 		while (len_a-- > 3)
 			pb(head_b, head_a);
 	ft_ts(head_a);

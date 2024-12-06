@@ -68,7 +68,7 @@ void	lstadd(t_list **head, int value)
 	}
 }
 
-/*void	lstdelone(t_list **head, t_list *node)
+void	lstdelone(t_list **head, t_list *node)
 {
 	if (node == NULL || *head == NULL)
 		return ;
@@ -83,8 +83,8 @@ void	lstadd(t_list **head, int value)
 	}
 	free(node);
 }
-*/
-void lstdelone(t_list **head, t_list *to_delete)
+
+/*void lstdelone(t_list **head, t_list *to_delete)
 {
     if (*head == NULL || to_delete == NULL)
         return;
@@ -105,7 +105,7 @@ void lstdelone(t_list **head, t_list *to_delete)
     to_delete->next->prev = to_delete->prev;
 
     free(to_delete);
-}
+}*/
 
 void	lstclear(t_list **head)
 {

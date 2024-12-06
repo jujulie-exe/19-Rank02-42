@@ -47,7 +47,8 @@ void	ft_stack_a(t_list **head_a, char **argv);
 long	atol(const char	*str);
 char	**ft_split(char const *s, char c);
 
-
+void	shell_short(t_list **head_a, t_list **head_b);
+int	empty(t_list **head);
 void	ft_ts(t_list **head);
 void	ft_two_short(t_list **head);
 //*** ft_set_value.c ***

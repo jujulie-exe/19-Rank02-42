@@ -10,7 +10,6 @@ void	ft_ts(t_list **head)
 	a = (*head)->value;
 	b = (*head)->next->value;
 	c = (*head)->next->next->value;
-
 	if(a > b && a > c)
 	{
 		ra(head);
@@ -18,11 +17,7 @@ void	ft_ts(t_list **head)
 			sa(head);
 	}
 	else if (c < b && c < a) // c piu piccolo
-	{
-		sa(head);
 		rra(head);
-
-	}
 	else if (b > a && b > c) // b piu grande
 	{
 		sa(head);

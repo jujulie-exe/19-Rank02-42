@@ -20,11 +20,9 @@ int	main(int argc, char **argv)
 {
 	t_list	*a;
 	t_list	*b;
-	int	n;
 
 	a = NULL;
 	b = NULL;
-	n = 0;
 	if(argc == 1)
 		return (1);
 	else if(argc == 2)
@@ -36,10 +34,10 @@ int	main(int argc, char **argv)
 	else
 		ft_stack_init(&a, argv + 1);
 
-	n = ft_lenstck(a);
-	printf("%d\n", n);
-	ft_printf_list(a);
-	printf("-----PRIMA----\n");
+//	n = ft_lenstck(a);
+//	printf("%d\n", n);
+//	ft_printf_list(a);
+//	printf("-----PRIMA----\n");
 	if (a != NULL)
 	{
 /*		if(ft_lenstck(a) == 2)2dd
@@ -49,8 +47,8 @@ int	main(int argc, char **argv)
 		else
 			push_swap(&a, &b);
 	}
-	printf("-----DOPO------\n");
-	ft_printf_list(a);
+//	printf("-----DOPO------\n");
+//	ft_printf_list(a);
 	free_stack(&a);
 
 }

@@ -48,6 +48,8 @@ long	atol(const char	*str);
 char	**ft_split(char const *s, char c);
 
 void	shell_short(t_list **head_a, t_list **head_b);
+void	insertion_short(t_list **head_a, t_list **head_b);
+int	is_sorted(t_list **head);
 int	empty(t_list **head);
 void	ft_ts(t_list **head);
 void	ft_two_short(t_list **head);

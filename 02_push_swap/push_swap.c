@@ -18,14 +18,16 @@ void	rot_both_rev(t_list **head_a, t_list **head_b, t_list *cheapest, char a)
 	{
 		while (*head_a != cheapest->target_node && *head_b != cheapest)
 			rr(head_a, head_b);
+	set_index(head_a);
+	set_index(head_b);
 	}
 	if (a == 'v')
 	{
 		while (*head_a != cheapest->target_node && *head_b != cheapest)
 			rrr(head_a, head_b);
-	}
 	set_index(head_a);
 	set_index(head_b);
+	}
 }
 
 void	end_rot(t_list **head, t_list *top, char n)
@@ -65,8 +67,8 @@ int	move(t_list **head_a, t_list **head_b)
 		rot_both_rev(head_a, head_b, cheapest, 'r');
 	else if (!(cheapest->above_median) && !(cheapest->target_node->above_median))
 		rot_both_rev(head_a, head_b, cheapest, 'v');
-	end_rot(head_a, cheapest->target_node, 'a');
 	end_rot(head_b, cheapest, 'b');
+	end_rot(head_a, cheapest->target_node, 'a');
 	pa(head_a, head_b);
 	return (1);
 }
@@ -77,11 +79,8 @@ void	push_swap(t_list **head_a, t_list **head_b)
 	t_list	*smallest;
 
 	len_a = ft_lenstck(*head_a);
-//	if (len_a == 5)
-//		shell_short(head_a, head_b);
-//	else
-		while (len_a-- > 3)
-			pb(head_b, head_a);
+	while (len_a-- > 3)
+		pb(head_b, head_a);
 	ft_ts(head_a);
 	while (empty(head_b))
 	{
@@ -90,7 +89,7 @@ void	push_swap(t_list **head_a, t_list **head_b)
 	}
 	set_index(head_a);
 	smallest = find_smallest(head_a);
-	if (!(smallest->above_median))
+	if ((smallest->above_median))
 		while (*head_a != smallest)
 			ra(head_a);
 	else

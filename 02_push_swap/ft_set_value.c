@@ -26,14 +26,14 @@ void	set_index(t_list **head)
 	while (1)
 	{
 		current->index = i;
-		if (i >= len)
+		if (i <= len)
 			current->above_median = true;
 		else
 			current->above_median = false;
 		current = current->next;
+		i++;
 		if (current == *head)
 			break ;
-		i++;
 	}
 }
 
@@ -101,9 +101,9 @@ void	set_price(t_list **head_a, t_list **head_b)
 			current_b->push_price += current_b->target_node->index;
 		else 
 			current_b->push_price += len_a - (current_b->target_node->index);
+		current_b = current_b->next;
 		if(current_b == *head_b)
 			break ;
-		current_b = current_b->next;
 
 	}
 }

@@ -17,7 +17,7 @@ void	exit_and_free(t_list **head, char **str)
 {
 	if (!(head == NULL || *head == NULL))
 		free_stack(head);
-	write(1, "Error\n", 6);
+	write(2, "Error\n", 6);
 	free_argv(str);
 	exit (0);
 }

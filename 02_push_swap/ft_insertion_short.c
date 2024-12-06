@@ -12,20 +12,22 @@ int	empty(t_list **head)
 int	is_sorted(t_list **head)
 {
 	t_list	*current;
-	t_list	*compare;
+	//t_list	*compare;
 
 	current = *head;
 	while (empty(head))
 	{
-		compare = current;
-		while (1)
+		if (current->value > current->next->value)
+			return (0);
+		//compare = current;
+/*		while (1)
 		{
 			if (compare->value > current->value)
 				return (0);
 			compare = compare->next;
 			if (compare == current)
 				break ;
-		}
+		}*/
 		current = current->next;
 		if (current == *head)
 			break ;

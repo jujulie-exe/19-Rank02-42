@@ -27,9 +27,15 @@ int	main(int argc, char **argv)
 	n = 0;
 	if(argc == 1)
 		return (1);
-	if(argc == 2)
+	else if(argc == 2)
+	{
 		argv = ft_split(argv[1], ' ');
-	ft_stack_init(&a, argv);
+		ft_stack_init(&a, argv);
+		free_argv(argv);
+	}
+	else
+		ft_stack_init(&a, argv + 1);
+
 	n = ft_lenstck(a);
 	printf("%d\n", n);
 	ft_printf_list(a);
@@ -46,6 +52,5 @@ int	main(int argc, char **argv)
 	printf("-----DOPO------\n");
 	ft_printf_list(a);
 	free_stack(&a);
-	free_argv(argv);
 
 }

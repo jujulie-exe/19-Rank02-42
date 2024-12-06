@@ -112,15 +112,10 @@ void	push_swap(t_list **head_a, t_list **head_b)
 			pb(head_b, head_a);
 	}
 	ft_ts(head_a);
-	while (head_b != NULL)
+	while ((len_b = ft_lenstck(*head_b)) != 0)
 	{
-		len_b = ft_lenstck(*head_b);
-		if (len_b == 0)
-			break ;
 		init(head_a, head_b);
 		move(head_a, head_b);
-		if (move == 0)
-			break ;
 	}
 	set_index(head_a);
 	smallest = find_smallest(head_a);

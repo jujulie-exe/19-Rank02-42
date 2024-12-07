@@ -28,11 +28,11 @@ int	main(int argc, char **argv)
 	else if(argc == 2)
 	{
 		argv = ft_split(argv[1], ' ');
-		ft_stack_init(&a, argv);
+		ft_stack_init(&a, argv, true);
 		free_argv(argv);
 	}
 	else
-		ft_stack_init(&a, argv + 1);
+		ft_stack_init(&a, argv + 1, false);
 
 //	n = ft_lenstck(a);
 //	printf("%d\n", n);

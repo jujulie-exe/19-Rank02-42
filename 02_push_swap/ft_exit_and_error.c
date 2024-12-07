@@ -13,17 +13,18 @@
 
 #include "push_swap.h"
 
-void	exit_and_free(t_list **head, char **str)
+void	exit_and_free(t_list **head, char **str, bool control)
 {
 	if (!(head == NULL || *head == NULL))
 		free_stack(head);
+	if (control == true)
+		free_argv(str);
 	write(2, "Error\n", 6);
-	free_argv(str);
-	exit (0);
+	exit (1);
 }
 
 
-void	ft_check_double(t_list **head, char **argv)
+void	ft_check_double(t_list **head, char **argv, bool control)
 {
 	int	tmp;
 	t_list	*current;
@@ -40,7 +41,7 @@ void	ft_check_double(t_list **head, char **argv)
 			tmp = current->value;
 			current = current->next;
 			if (tmp == current->value)
-				exit_and_free(head, argv);
+				exit_and_free(head, argv, control);
 			if (current == *head)
 				break ;
 		}

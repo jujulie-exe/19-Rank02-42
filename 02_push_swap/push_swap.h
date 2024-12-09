@@ -83,10 +83,12 @@ int			move(t_list **head_a, t_list **head_b);
 
 //** exit_and_free ***
 
-void		ft_check_double(t_list **head, char **argv, bool control);
 void		exit_and_free(t_list **head, char **argv, bool control);
-int			ft_istrdigit(char *s);
+int			ft_istrdigit(char *str_nbr);
 void		free_argv(char **str);
 void		free_stack(t_list **head);
+int			is_puntini(char *s);
+void		exit_and_free_no_std(t_list **head, char **str, bool control);
+int			 ft_sorted(t_list **head);
 
 #endif

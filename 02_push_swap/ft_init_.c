@@ -12,27 +12,47 @@
 
 #include "push_swap.h"
 
-void	ft_check_double(t_list **head, char **argv, bool control)
+int ft_sorted(t_list **head)
 {
-	t_list		*current;
-	int			tmp;
+	t_list	*current;
 
 	if (head == NULL || *head == NULL)
-		return ;
+		return (1);
 	current = *head;
-	tmp = 0;
+	
+	while (1)
+	{
+		if (current->value > current->next->value)
+			return (0);
+		current = current->next;
+		if (current == (*head)->prev)
+			break ;
+	}
+	
+	return (1);
+
+}
+
+int ft_check_double(t_list **head, int nbr)
+{
+	t_list	*current;
+
+	if (head == NULL || *head == NULL)
+		return (0);
+	current = *head;
 	if (!(*head == (*head)->next))
 	{
 		while (1)
 		{
-			tmp = current->value;
+			if (nbr == current->value)
+				return (1);
 			current = current->next;
-			if (tmp == current->value)
-				exit_and_free(head, argv, control);
 			if (current == *head)
 				break ;
 		}
 	}
+	return (0);
+
 }
 
 void	ft_stack_init(t_list **head_a, char **argv, bool control)
@@ -43,16 +63,17 @@ void	ft_stack_init(t_list **head_a, char **argv, bool control)
 	i = 0;
 	while (argv[i])
 	{
-		if (!(ft_istrdigit(argv[i])))
+		if ((ft_istrdigit(argv[i])))
 			exit_and_free(head_a, argv, control);
 		n = ft_atol(argv[i]);
 		if (n > INT_MAX || n < INT_MIN)
+			exit_and_free(head_a, argv, control);
+		if (ft_check_double(head_a, n) == 1)
 			exit_and_free(head_a, argv, control);
 		if (*head_a == NULL)
 			*head_a = lstnew((int)(n));
 		else
 			lstadd(head_a, (int)n);
-		ft_check_double(head_a, argv, control);
 		i++;
 	}
 }

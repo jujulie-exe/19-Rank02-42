@@ -12,6 +12,15 @@
 
 #include "push_swap.h"
 
+void	exit_and_free_no_std(t_list **head, char **str, bool control)
+{
+	if (!(head == NULL || *head == NULL))
+		free_stack(head);
+	if (control == true)
+		free_argv(str);
+	exit (1);
+}
+
 void	exit_and_free(t_list **head, char **str, bool control)
 {
 	if (!(head == NULL || *head == NULL))
@@ -22,28 +31,23 @@ void	exit_and_free(t_list **head, char **str, bool control)
 	exit (1);
 }
 
-int	ft_isdigit(int ch)
-{
-	if (ch == '-' || ch == '+')
-		return (1);
-	else if (ch >= '0' && ch <= '9')
-		return (1);
-	else
-		return (0);
-}
 
-int	ft_istrdigit(char *s)
+int	ft_istrdigit(char *str_nbr)
 {
-	int	i;
-
-	i = 0;
-	while (s[i] != '\0')
+	if (!(*str_nbr == '+'
+			|| *str_nbr == '-'
+			|| (*str_nbr >= '0' && *str_nbr <= '9')))
+		return (1);
+	if ((*str_nbr == '+'
+			|| *str_nbr == '-')
+		&& !(str_nbr[1] >= '0' && str_nbr[1] <= '9'))
+		return (1);
+	while (*++str_nbr)
 	{
-		if (!(ft_isdigit(s[i])))
-			return (0);
-		i++;
+		if (!(*str_nbr >= '0' && *str_nbr <= '9'))
+			return (1);
 	}
-	return (1);
+	return (0);
 }
 
 void	free_argv(char **str)

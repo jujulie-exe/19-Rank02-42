@@ -8,26 +8,30 @@ int	empty(t_list **head)
 		return (1);
 }
 
-/*
+int	is_puntini(char *s)
+{
+	int	i;
+
+	i = 0;
+	while (s[i] != '\0')
+	{
+		if (s[i] == '.')
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+
 int	is_sorted(t_list **head)
 {
 	t_list	*current;
-	t_list	*compare;
 
 	current = *head;
 	while (empty(head))
 	{
 		if (current->value > current->next->value)
 			return (0);
-		compare = current;
-		while (1)
-		{
-			if (compare->value > current->value)
-				return (0);
-			compare = compare->next;
-			if (compare == current)
-				break ;
-		}
 		current = current->next;
 		if (current == *head)
 			break ;
@@ -35,7 +39,7 @@ int	is_sorted(t_list **head)
 	return (1);
 }
 
-t_list	*get_gap_node(t_list **head, int index)
+/*t_list	*get_gap_node(t_list **head, int index)
 {
 	t_list	*current;
 	int	i;

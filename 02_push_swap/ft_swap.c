@@ -1,10 +1,10 @@
-
 #include "push_swap.h"
 
 void	sa_exe(t_list **head)
 {
 	int	temp;
-	if(*head && (*head)->next != *head)
+
+	if (*head && (*head)->next != *head)
 	{
 		temp = (*head)->value;
 		(*head)->value = (*head)->next->value;
@@ -17,7 +17,6 @@ void	sa(t_list **head)
 	sa_exe(head);
 	write(1, "sa\n", 3);
 }
-
 
 void	sb(t_list **head)
 {

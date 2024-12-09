@@ -1,4 +1,3 @@
-
 #include "push_swap.h"
 
 void	ft_ts(t_list **head)
@@ -10,24 +9,24 @@ void	ft_ts(t_list **head)
 	a = (*head)->value;
 	b = (*head)->next->value;
 	c = (*head)->next->next->value;
-	if(a > b && a > c)
+	if (a > b && a > c)
 	{
 		ra(head);
 		if ((*head)->value > (*head)->next->value)
 			sa(head);
 	}
-	else if (c < b && c < a) // c piu piccolo
+	else if (c < b && c < a)
 		rra(head);
-	else if (b > a && b > c) // b piu grande
+	else if (b > a && b > c)
 	{
 		sa(head);
 		ra(head);
 	}
-	else if (b < c && b < a) //b piu piccolo
+	else if (b < c && b < a)
 	{
 		if (a < c)
 			sa(head);
-		else 
+		else
 			ra(head);
 	}
 }

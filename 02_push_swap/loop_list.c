@@ -1,11 +1,5 @@
-/*typedef struct  s_list
-{
-    int     value;
-    struct  s_list *next;
-    struct  s_list *prev;
-}t_list;
-*/
 #include "push_swap.h"
+
 t_list	*lstnew(int value)
 {
 	t_list	*new_node;
@@ -18,6 +12,7 @@ t_list	*lstnew(int value)
 	new_node->prev = new_node;
 	return (new_node);
 }
+
 void	lstadd_head(t_list **head, int value)
 {
 	t_list	*new_node;
@@ -32,7 +27,6 @@ void	lstadd_head(t_list **head, int value)
 		new_node->prev = new_node;
 		*head = new_node;
 	}
-
 	else
 	{
 		tail = (*head)->prev;
@@ -83,29 +77,6 @@ void	lstdelone(t_list **head, t_list *node)
 	}
 	free(node);
 }
-
-/*void lstdelone(t_list **head, t_list *to_delete)
-{
-    if (*head == NULL || to_delete == NULL)
-        return;
-
-    // Caso: lista con un solo elemento
-    if (to_delete == *head && (*head)->next == *head)
-    {
-        free(to_delete);
-        *head = NULL; // Aggiorna la testa a NULL
-        return;
-    }
-
-    // Aggiorna i puntatori per una lista circolare
-    if (to_delete == *head)
-        *head = to_delete->next; // Sposta la testa al nodo successivo
-
-    to_delete->prev->next = to_delete->next;
-    to_delete->next->prev = to_delete->prev;
-
-    free(to_delete);
-}*/
 
 void	lstclear(t_list **head)
 {

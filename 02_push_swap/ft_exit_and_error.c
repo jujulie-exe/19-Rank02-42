@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "push_swap.h"
 
 void	exit_and_free(t_list **head, char **str, bool control)
@@ -23,31 +22,6 @@ void	exit_and_free(t_list **head, char **str, bool control)
 	exit (1);
 }
 
-
-void	ft_check_double(t_list **head, char **argv, bool control)
-{
-	int	tmp;
-	t_list	*current;
-
-	if (head == NULL || *head == NULL)
-		return ;
-
-	current = *head;
-	tmp = 0;
-	if (!(*head == (*head)->next))
-	{
-		while (1)
-		{
-			tmp = current->value;
-			current = current->next;
-			if (tmp == current->value)
-				exit_and_free(head, argv, control);
-			if (current == *head)
-				break ;
-		}
-	}
-}
-
 int	ft_isdigit(int ch)
 {
 	if (ch == '-' || ch == '+')
@@ -58,14 +32,14 @@ int	ft_isdigit(int ch)
 		return (0);
 }
 
-int ft_istrdigit(char *s)
+int	ft_istrdigit(char *s)
 {
 	int	i;
 
 	i = 0;
 	while (s[i] != '\0')
 	{
-		if(!(ft_isdigit(s[i])))
+		if (!(ft_isdigit(s[i])))
 			return (0);
 		i++;
 	}
@@ -75,7 +49,7 @@ int ft_istrdigit(char *s)
 void	free_argv(char **str)
 {
 	int	i;
-	
+
 	i = 0;
 	if (str == NULL || *str == NULL)
 		return ;
@@ -86,15 +60,17 @@ void	free_argv(char **str)
 	}
 	free(str);
 }
+
 void	free_stack(t_list **head)
 {
+	t_list	*current;
+	t_list	*next;
+
 	if (head == NULL || *head == NULL)
 		return ;
-	t_list *current = *head;
-	t_list *next;
+	current = *head;
 	while (1)
 	{
-
 		next = current->next;
 		free(current);
 		current = next;
@@ -102,5 +78,4 @@ void	free_stack(t_list **head)
 			break ;
 	}
 	*head = NULL;
-}	
-
+}

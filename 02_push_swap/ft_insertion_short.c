@@ -1,33 +1,33 @@
-
 #include "push_swap.h"
 
 int	empty(t_list **head)
 {
-	if(head == NULL || *head == NULL)
+	if (head == NULL || *head == NULL)
 		return (0);
 	else
 		return (1);
 }
 
+/*
 int	is_sorted(t_list **head)
 {
 	t_list	*current;
-	//t_list	*compare;
+	t_list	*compare;
 
 	current = *head;
 	while (empty(head))
 	{
 		if (current->value > current->next->value)
 			return (0);
-		//compare = current;
-/*		while (1)
+		compare = current;
+		while (1)
 		{
 			if (compare->value > current->value)
 				return (0);
 			compare = compare->next;
 			if (compare == current)
 				break ;
-		}*/
+		}
 		current = current->next;
 		if (current == *head)
 			break ;
@@ -112,4 +112,4 @@ void 	shell_short(t_list **head_a, t_list **head_b)
 		insertion_short(head_a, head_b);
 
 
-}
+}*/

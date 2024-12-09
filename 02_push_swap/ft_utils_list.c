@@ -14,7 +14,7 @@
 
 int	ft_lenstck(t_list *head)
 {
-	int	len;
+	int		len;
 	t_list	*current;
 
 	len = 0;
@@ -32,13 +32,6 @@ int	ft_lenstck(t_list *head)
 	}
 	return (len);
 }
-
-/*t_list	*find_last_node(t_list **head)
-{
-	t_list last_node;
-	last_node->(*head)->prev;
-	return (last_node);
-}*/
 
 t_list	*find_smallest(t_list **head)
 {
@@ -65,9 +58,9 @@ t_list	*find_smallest(t_list **head)
 	return (smallest_node);
 }
 
-t_list *return_cheapest(t_list **head)
+t_list	*return_cheapest(t_list **head)
 {
-	t_list *current;
+	t_list	*current;
 
 	if (head == NULL || *head == NULL)
 		return (NULL);

@@ -10,12 +10,34 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "push_swap.h"
+
+void	ft_check_double(t_list **head, char **argv, bool control)
+{
+	t_list		*current;
+	int			tmp;
+
+	if (head == NULL || *head == NULL)
+		return ;
+	current = *head;
+	tmp = 0;
+	if (!(*head == (*head)->next))
+	{
+		while (1)
+		{
+			tmp = current->value;
+			current = current->next;
+			if (tmp == current->value)
+				exit_and_free(head, argv, control);
+			if (current == *head)
+				break ;
+		}
+	}
+}
 
 void	ft_stack_init(t_list **head_a, char **argv, bool control)
 {
-	int	i;
+	int			i;
 	long long	n;
 
 	i = 0;
@@ -34,7 +56,8 @@ void	ft_stack_init(t_list **head_a, char **argv, bool control)
 		i++;
 	}
 }
-void init(t_list **head_a, t_list **head_b)
+
+void	init(t_list **head_a, t_list **head_b)
 {
 	set_index(head_a);
 	set_index(head_b);
@@ -42,5 +65,3 @@ void init(t_list **head_a, t_list **head_b)
 	set_price(head_a, head_b);
 	set_cheapest(head_b);
 }
-
-

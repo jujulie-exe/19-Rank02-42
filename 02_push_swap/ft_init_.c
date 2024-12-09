@@ -19,7 +19,6 @@ int ft_sorted(t_list **head)
 	if (head == NULL || *head == NULL)
 		return (1);
 	current = *head;
-	
 	while (1)
 	{
 		if (current->value > current->next->value)
@@ -28,9 +27,7 @@ int ft_sorted(t_list **head)
 		if (current == (*head)->prev)
 			break ;
 	}
-	
 	return (1);
-
 }
 
 int ft_check_double(t_list **head, int nbr)

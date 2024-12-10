@@ -6,13 +6,13 @@
 /*   By: jfranco <jfranco@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 14:08:39 by jfranco           #+#    #+#             */
-/*   Updated: 2024/12/05 17:23:02 by jfranco          ###   ########.fr       */
+/*   Updated: 2024/12/10 10:44:23 by jfranco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int ft_sorted(t_list **head)
+int	ft_sorted(t_list **head)
 {
 	t_list	*current;
 
@@ -30,7 +30,7 @@ int ft_sorted(t_list **head)
 	return (1);
 }
 
-int ft_check_double(t_list **head, int nbr)
+int	ft_check_double(t_list **head, int nbr)
 {
 	t_list	*current;
 
@@ -49,7 +49,6 @@ int ft_check_double(t_list **head, int nbr)
 		}
 	}
 	return (0);
-
 }
 
 void	ft_stack_init(t_list **head_a, char **argv, bool control)

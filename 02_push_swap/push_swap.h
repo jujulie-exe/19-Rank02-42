@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jfranco <jfranco@student.s19.be>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/10 10:57:37 by jfranco           #+#    #+#             */
+/*   Updated: 2024/12/10 10:58:37 by jfranco          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 # include <stdio.h>
@@ -89,6 +101,6 @@ void		free_argv(char **str);
 void		free_stack(t_list **head);
 int			is_puntini(char *s);
 void		exit_and_free_no_std(t_list **head, char **str, bool control);
-int			 ft_sorted(t_list **head);
+int			ft_sorted(t_list **head);
 
 #endif

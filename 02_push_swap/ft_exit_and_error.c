@@ -6,7 +6,7 @@
 /*   By: jfranco <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 18:07:35 by jfranco           #+#    #+#             */
-/*   Updated: 2024/12/05 18:34:02 by jfranco          ###   ########.fr       */
+/*   Updated: 2024/12/10 10:43:40 by jfranco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ void	exit_and_free(t_list **head, char **str, bool control)
 	write(2, "Error\n", 6);
 	exit (1);
 }
-
 
 int	ft_istrdigit(char *str_nbr)
 {

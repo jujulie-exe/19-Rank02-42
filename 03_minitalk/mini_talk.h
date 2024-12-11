@@ -6,7 +6,7 @@
 /*   By: jfranco <jfranco@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 13:15:28 by jfranco           #+#    #+#             */
-/*   Updated: 2024/12/10 15:46:34 by jfranco          ###   ########.fr       */
+/*   Updated: 2024/12/11 21:07:06 by jfranco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,17 @@
 # include <limits.h>
 # include <stdlib.h>
 
-# define PID_BITS 32
+# define BUSY 0
+# define READY 1
+void	print_pid(void);
+void	ft_kill_check(pid_t pid, int sig);
+void handle_signal(int sig, siginfo_t *info, void *context);
+void	ft_siganl(int sign, void *handler, bool use);
 
-typedef struct 	s_server {
+/*typedef struct 	s_server {
 	pid_t	client_pid;
 	int	received_bits;
 	bool	pid_received;
-} t_server;
+} t_server;*/
 
 #endif

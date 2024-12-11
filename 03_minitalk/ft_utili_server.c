@@ -6,59 +6,24 @@
 /*   By: jfranco <jfranco@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 14:33:15 by jfranco           #+#    #+#             */
-/*   Updated: 2024/12/10 16:55:56 by jfranco          ###   ########.fr       */
+/*   Updated: 2024/12/11 21:15:07 by jfranco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_talk.h"
-
-void	signal_hander(int sig, siginfo_t *info, void *context)
-{
-	t_server	*server;
-
-	server = (t_server *)info->si_value.sival_ptr;
-	server->client_pid<<=1;
-	if (sig == SIGUSR2)
-		server->client_pid |= 1;
-	else if (sig == SIGUSR1)
-		server->client_pid &= -1;
-	server->received_bits++;
-	if (server->received_bits == PID_BITS)
-		server->pid_received = true;
-
-}
-
-void	set_signal_handlers(t_server *server)
-{
-	struct sigaction sa;
-
-	sa.sa_flags = 0;
-	sa.sa_handler = (void (*)(int))signal_hander;
-	sigemptyset(&sa.sa_mask);
-
-	if (sigaction(SIGUSR1, &sa, NULL) == -1 || sigaction(SIGUSR2, &sa, NULL) == -1)
-	{
-		exit (1);
-	}
-}
-
-pid_t	receive_pid(t_server *server)
-{
-	server->client_pid = 0;
-	server->received_bits = 0;
-	server->pid_received = false;
-
-	while (!server->pid_received)
-		pause();
-	return server->client_pid;
-}
-
 int	out_char(int c)
 {
 	return (write(1, &c, 1));
 }
-
-int	ft_putnbr(int n)
+void	ft_kill_check(pid_t pid, int sig)
+{
+	if (kill(pid, sig) < 0)
+	{
+		write(1, "Error\n", 6);
+		exit (1);
+	}
+}
+int	out_digit(int n)
 {
 	int		count;
 
@@ -78,29 +43,38 @@ int	ft_putnbr(int n)
 	}
 	else
 	{
-		count += ft_putnbr(n / 10);
+		count += out_digit(n / 10);
 		count += out_char(n % 10 + '0');
 	}
 	return (count);
 }
 
-void	print_pid()
+void	ft_siganl(int sign, void *handler, bool use)
 {
-	pid_t	pid;
-
-	pid = getpid();
-	ft_putnbr((int)pid);
-}
-
-int	main()
-{
-	t_server	server;
-	pid_t		pid;
-	print_pid();
-	set_signal_handlers(&server);
-	while (1)
+	struct sigaction	sa = {0};
+	if (use)
 	{
-		pid_t	client_pid = receive_pid(&server);
+		sa.sa_sigaction = handler;
+		sa.sa_flags = SA_SIGINFO;
+	}
+	else
+		sa.sa_handler = handler;
+	sigemptyset(&sa.sa_mask);
+	sigaddset(&sa.sa_mask, SIGUSR1);
+	sigaddset(&sa.sa_mask, SIGUSR2);
+	if (sigaction(sign, &sa, NULL) < 0)
+	{
+		write(1, "Error\n", 6);
+		exit(1);
 	}
 }
 
+void	print_pid(void)
+{
+	printf("Il PID del Receiver è: %d\n", getpid());
+	printf("In attesa di un messaggio...\n");
+	int	n;
+
+	n = getpid();
+	out_digit(n);
+}

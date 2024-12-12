@@ -2,13 +2,13 @@
 
 volatile sig_atomic_t	g_server_reponse = BUSY;
 
-void	end_message(int sig)
+void	end_message(void)
 {
 	write(1, "OK!\n", 4);
 	exit (0);
 }
 
-void	ready_or_not(int sig)
+void	ready_or_not(void)
 {
 	g_server_reponse = READY;
 }

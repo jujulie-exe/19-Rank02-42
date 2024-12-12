@@ -26,7 +26,6 @@
 
 void	print_pid(void);
 void	ft_kill_check(pid_t pid, int sig);
-void	handle_signal(int sig, siginfo_t *info, void *context);
 void	ft_siganl(int sign, void *handler, bool use);
 
 /*typedef struct 	s_server {

@@ -12,7 +12,7 @@
 
 #include "mini_talk.h"
 
-void	handle_signal(int sig, siginfo_t *info, void *context)
+void	handle_signal(int sig, siginfo_t *info)
 {
 	static int		current_bit = 0;
 	static char		current_char = 0;

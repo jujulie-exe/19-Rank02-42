@@ -12,11 +12,12 @@
 
 #include "mini_talk.h"
 
-void	handle_signal(int sig, siginfo_t *info, void *context) 
+void	handle_signal(int sig, siginfo_t *info, void *context)
 {
-	static int	 current_bit = 0;
-	static char	 current_char = 0;
+	static int		current_bit = 0;
+	static char		current_char = 0;
 	static pid_t	client_pid;
+
 	if (info->si_pid)
 		client_pid = info->si_pid;
 	if (sig == SIGUSR1)
@@ -29,10 +30,10 @@ void	handle_signal(int sig, siginfo_t *info, void *context)
 		current_bit = 0;
 		if (current_char == '\0')
 		{
-			write(1,"Receiving transmission\n", 23);
+			write(1, "Receiving transmission\n", 23);
 			kill(client_pid, SIGUSR1);
 			current_char = 0;
-			return;
+			return ;
 		}
 		write(1, &current_char, 1);
 		current_char = 0;
@@ -40,13 +41,12 @@ void	handle_signal(int sig, siginfo_t *info, void *context)
 	kill(client_pid, SIGUSR2);
 }
 
-int	main(void) 
+int	main(void)
 {
 	print_pid();
 	ft_siganl(SIGUSR1, handle_signal, true);
 	ft_siganl(SIGUSR2, handle_signal, true);
 	while (1)
 		pause();
-	return 0;
+	return (0);
 }
-

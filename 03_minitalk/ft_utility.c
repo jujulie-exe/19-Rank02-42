@@ -56,7 +56,7 @@ void	ft_siganl(int sign, void *handler, bool use)
 {
 	struct sigaction	sa;
 
-	sa = {0};
+	sa = (struct sigaction){0};
 	if (use)
 	{
 		sa.sa_sigaction = handler;
@@ -79,7 +79,8 @@ void	print_pid(void)
 	int	n;
 
 	n = getpid();
-	printf("Il PID del Receiver è: %d\n", getpid());
-	printf("In attesa di un messaggio...\n");
+	write(1, "Server PID ", 11);
 	out_digit(n);
+	write(1, "\n\n", 2);
+	write(1, "Hold position\n", 14);
 }

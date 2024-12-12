@@ -30,7 +30,7 @@ void	handle_signal(int sig, siginfo_t *info, void *context)
 		current_bit = 0;
 		if (current_char == '\0')
 		{
-			write(1, "Receiving transmission\n", 23);
+			write(1, "\n<<Received transmission>>\n", 27);
 			kill(client_pid, SIGUSR1);
 			current_char = 0;
 			return ;

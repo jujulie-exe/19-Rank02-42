@@ -55,7 +55,7 @@ int	main(int argc, char **argv)
 		write(1, "Usage: <server_pid> <message>\n", 30);
 		return (1);
 	}
-	server_pid = atoi(argv[1]);
+	server_pid = ft_atol(argv[1]);
 	message = argv[2];
 	ft_siganl(SIGUSR2, ready_or_not, false);
 	ft_siganl(SIGUSR1, end_message, false);

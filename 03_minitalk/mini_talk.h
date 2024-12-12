@@ -24,9 +24,10 @@
 # define BUSY 0
 # define READY 1
 
-void	print_pid(void);
-void	ft_kill_check(pid_t pid, int sig);
-void	ft_siganl(int sign, void *handler, bool use);
+void		print_pid(void);
+void		ft_kill_check(pid_t pid, int sig);
+void		ft_siganl(int sign, void *handler, bool use);
+long long	ft_atol(const char *str);
 
 /*typedef struct 	s_server {
 	pid_t	client_pid;

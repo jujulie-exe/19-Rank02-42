@@ -12,6 +12,23 @@
 
 #include "push_swap.h"
 
+void	algo_check(t_list **a, t_list **b)
+{
+	if (ft_lenstck(*a) == 2)
+		ft_two_short(a);
+	if (ft_lenstck(*a) == 3)
+		ft_ts(a);
+	else
+		push_swap(a, b);
+}
+
+void	err(char ***str)
+{
+	free(str);
+	write(2, "Error\n", 6);
+	exit (1);
+}
+
 int	main(int argc, char **argv)
 {
 	t_list	*a;
@@ -24,19 +41,14 @@ int	main(int argc, char **argv)
 	if (argc == 2)
 	{
 		argv = ft_split(argv[1], ' ');
+		if (!argv || !argv[0])
+			err(&argv);
 		ft_stack_init(&a, argv, true);
 		free_argv(argv);
 	}
 	else
 		ft_stack_init(&a, argv + 1, false);
 	if (a != NULL && ft_sorted(&a) == 0)
-	{
-		if (ft_lenstck(a) == 2)
-			ft_two_short(&a);
-		if (ft_lenstck(a) == 3)
-			ft_ts(&a);
-		else
-			push_swap(&a, &b);
-	}
+		algo_check(&a, &b);
 	free_stack(&a);
 }

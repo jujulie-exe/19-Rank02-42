@@ -58,7 +58,8 @@ static void	*ft_free(char **strs, size_t count)
 		i++;
 	}
 	free(strs);
-	return (NULL);
+	write(1, "Error_SPLIT\n", 12);
+	exit (1);
 }
 
 static void	ft_start(size_t *i, size_t *q)
@@ -77,7 +78,7 @@ char	**ft_split(char const *s, char c)
 	ft_start(&j, &q);
 	dst = (char **)malloc((wrd_count(s, c) + 1) * sizeof(char *));
 	if (dst == NULL)
-		return (NULL);
+		exit (1);
 	while (s[j] != '\0')
 	{
 		if (s[j] != c)

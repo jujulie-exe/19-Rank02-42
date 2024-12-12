@@ -52,7 +52,7 @@ int	main(int argc, char **argv)
 
 	if (argc != 3)
 	{
-		write(1, "Usage: <server_pid> <message>\n", 30);
+		write(1, "./client PID_SERVER STRING_TO_PASS\n", 35);
 		return (1);
 	}
 	server_pid = ft_atol(argv[1]);

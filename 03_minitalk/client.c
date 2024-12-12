@@ -28,7 +28,7 @@ void	send_message(pid_t server_pid, char message)
 			ft_kill_check(server_pid, SIGUSR2);
 		bit++;
 		while (g_server_reponse == BUSY)
-			usleep(45);
+			usleep(100);
 		g_server_reponse = BUSY;
 	}
 }

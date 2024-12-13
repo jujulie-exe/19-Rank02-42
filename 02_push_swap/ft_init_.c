@@ -6,7 +6,7 @@
 /*   By: jfranco <jfranco@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 14:08:39 by jfranco           #+#    #+#             */
-/*   Updated: 2024/12/10 10:44:23 by jfranco          ###   ########.fr       */
+/*   Updated: 2024/12/13 16:56:24 by jfranco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,16 +37,13 @@ int	ft_check_double(t_list **head, int nbr)
 	if (head == NULL || *head == NULL)
 		return (0);
 	current = *head;
-	if (!(*head == (*head)->next))
+	while (1)
 	{
-		while (1)
-		{
-			if (nbr == current->value)
-				return (1);
-			current = current->next;
-			if (current == *head)
-				break ;
-		}
+		if (nbr == current->value)
+			return (1);
+		current = current->next;
+		if (current == *head)
+			break ;
 	}
 	return (0);
 }

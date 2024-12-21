@@ -6,7 +6,7 @@
 /*   By: jfranco <jfranco@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 15:39:06 by jfranco           #+#    #+#             */
-/*   Updated: 2024/12/21 17:00:47 by jfranco          ###   ########.fr       */
+/*   Updated: 2024/12/21 18:59:40 by jfranco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	draw_mandelbrot(t_fractal *fractal, t_data *data)
 	double	c_re;
 	double	c_im;
 
-	aspect_ratio = (double) WIDTH / HEIGHT;
+	aspect_ratio = (double) WIDTH / (double)HEIGHT;
 	x = 0;
 	y = 0;
 	while (y < HEIGHT)
@@ -54,5 +54,36 @@ void	draw_mandelbrot(t_fractal *fractal, t_data *data)
 		}
 		y++;
 	}
+}
+
+void	draw_julia(t_fractal *fractal, t_data  *data, double c_re, double c_im)
+{
+	int	x;
+	int	y;
+	int	color;
+	int	iter;
+	double	z_re;
+	double	z_im;
+	double	aspect_ratio;
+
+	aspect_ratio = (double) WIDTH / (double) HEIGHT;
+	y = 0;
+	while (y < HEIGHT)
+	{
+		x = 0;
+		while(x < WIDTH)
+		{
+			calulate_complex_coords(x, y, fractal, &z_re, &z_im, aspect_ratio);
+			iter = julia(z_re, z_im, c_re, c_im);
+			if (iter == MAX_ITER)
+				color = 0x000000;
+			else
+				color = (iter * 0xFFFFFF) / MAX_ITER;
+			my_mlx_pixel_put(data, x, y, color);
+			x++;
+		}
+		y++;
+	}
+
 }
 

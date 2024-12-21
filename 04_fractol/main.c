@@ -6,7 +6,7 @@
 /*   By: jfranco <jfranco@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 15:21:01 by jfranco           #+#    #+#             */
-/*   Updated: 2024/12/21 18:37:14 by jfranco          ###   ########.fr       */
+/*   Updated: 2024/12/21 19:10:07 by jfranco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,6 @@ void    my_mlx_pixel_put(t_data *data, int x, int y, int color) {
     }
 }
 
-int mandelbrot(double c_re, double c_im) {
-    double z_re = 0;
-    double z_im = 0;
-    int i = 0;
-
-    while (z_re * z_re + z_im * z_im <= 4 && i < MAX_ITER) {
-        double temp = z_re * z_re - z_im * z_im + c_re;
-        z_im = 2 * z_re * z_im + c_im;
-        z_re = temp;
-        i++;
-    }
-    return i;
-}
 
 int	key_hook(int keycode, t_data *data, t_fractal *fractal)
 {
@@ -61,9 +48,9 @@ int	main()
     data.win = mlx_new_window(data.mlx, WIDTH, HEIGHT, "Mandelbrot Set");
     data.img = mlx_new_image(data.mlx, WIDTH, HEIGHT);
     data.addr = mlx_get_data_addr(data.img, &data.bits_per_pixel, &data.line_length, &data.endian);
-    	draw_mandelbrot(&fractal, &data);
+    	draw_julia(&fractal, &data, -0.8, 0.2);
 	mlx_put_image_to_window(data.mlx, data.win, data.img, 0, 0);
-	mlx_key_hook(data.win, (void *)key_hook, &data);
+	//mlx_key_hook(data.win, (void *)key_hook, &data);
 
 
     mlx_loop(data.mlx);

@@ -6,7 +6,7 @@
 /*   By: jfranco <jfranco@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 15:00:44 by jfranco           #+#    #+#             */
-/*   Updated: 2024/12/21 18:24:24 by jfranco          ###   ########.fr       */
+/*   Updated: 2024/12/21 19:09:15 by jfranco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef FRACTOL_H
@@ -17,9 +17,9 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-#define WIDTH 800
-#define HEIGHT 800
-#define MAX_ITER 50
+#define WIDTH 2920
+#define HEIGHT 2080
+#define MAX_ITER 150
 
 typedef struct s_data {
     void    *mlx;
@@ -49,5 +49,8 @@ void	calulate_complex_coords(int x, int y, t_fractal *fractal, double *c_re, dou
 void	draw_mandelbrot(t_fractal *fractal, t_data *data);
 int	mandelbrot(double c_re, double c_im);
 void	init_fra(t_fractal *fractal);
+int	julia(double z_re, double z_im, double c_re, double c_im);
+int	mandelbrot(double c_re, double c_im);
+void	draw_julia(t_fractal *fractal, t_data  *data, double c_re, double c_im);
 
 #endif

@@ -53,7 +53,11 @@ void	calulate_complex_coords(int x, int y, t_fractal *fractal, double *c_re, dou
 void	draw_mandelbrot(t_fractal *fractal, t_data *data);
 int	mandelbrot(double c_re, double c_im, double *z_re_out, double *z_im_out);
 void	init_fra(t_fractal *fractal);
-int	julia(double z_re, double z_im, double c_re, double c_im);
 void	draw_julia(t_fractal *fractal, t_data  *data, double c_re, double c_im);
+int	manager_hook(t_data *data, t_fractal *fractal);
+int	key_hook(int keycode, t_data *data);
+int	mouse_hook(int button,int x, int y, t_data *data);
+void	zoom(t_fractal *fractal, double factor, bool check, t_data *data);
+int	julia(double z_re, double z_im, double c_re, double c_im);
 
 #endif

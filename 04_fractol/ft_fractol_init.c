@@ -22,20 +22,4 @@ void	zoom(t_fractal *fractal, double factor, bool check, t_data *data)
 }
 
 
-int	check_key(t_fractal *fractal, int keycode, t_data *data)
-{
-	if (keycode == 119)
-	{
-		zoom(fractal, 0.9, false, data);
-		return (1);
-	}
-	else if (keycode == 114)
-	{
-		zoom(fractal, 0.9, true, data);
-		return (1);
-	}
-	else if (keycode == 114)
-		init_fra(fractal);
-	return (0);
-}
 

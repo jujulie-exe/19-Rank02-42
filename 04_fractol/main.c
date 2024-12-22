@@ -21,14 +21,6 @@ void    my_mlx_pixel_put(t_data *data, int x, int y, int color) {
 }
 
 
-int	key_hook(int keycode, t_data *data)
-{
-	int i;
-	i = check_key(data->fractal, keycode, data);
-	printf("%d\n", keycode);
-
-	return (i);
-}
 
 void	init_fra(t_fractal *fractal)
 {
@@ -59,8 +51,10 @@ int	main()
 	init_fra(&fractal);
 	init_data(&data, &fractal);
 	draw_mandelbrot(&fractal, &data);
-    	//draw_julia(&fractal, &data, -0.8, 0.2);
-	mlx_hook(data.win, 2, (1L<<0), key_hook,&data);
+//    	draw_julia(&fractal, &data, -0.8, 0.2);
+	//mlx_hook(data.win, 4, (1L<<2), mouse_hook,&data);
+	//mlx_hook(data.win, 2, (1L<<0), key_hook,&data);
+	//mlx_hook(data.win, 17, (1L<<2), mouse_hook,&data);
 	mlx_loop(data.mlx);
 	return 0;
 }

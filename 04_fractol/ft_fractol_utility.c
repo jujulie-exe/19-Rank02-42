@@ -92,6 +92,7 @@ void	draw_julia(t_fractal *fractal, t_data  *data, double c_re, double c_im)
 			my_mlx_pixel_put(data, x, y, color);
 			x++;
 		}
+		mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
 		y++;
 	}
 

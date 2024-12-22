@@ -12,7 +12,7 @@
 
 #include "fractol.h"
 
-int mandelbrot(double c_re, double c_im) 
+int mandelbrot(double c_re, double c_im, double *z_re_out, double *z_im_out)
 {
     double z_re = 0;
     double z_im = 0;
@@ -24,6 +24,8 @@ int mandelbrot(double c_re, double c_im)
         z_re = temp;
         i++;
     }
+    *z_re_out = z_re;
+    *z_im_out = z_im;
     return i;
 }
 

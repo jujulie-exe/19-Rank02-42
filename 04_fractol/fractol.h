@@ -17,10 +17,13 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <math.h>
+#include <unistd.h>
+#include <stdio.h>
 
-#define WIDTH 1920
-#define HEIGHT 1080
-#define MAX_ITER 75
+
+#define WIDTH 1000
+#define HEIGHT 1000
+#define MAX_ITER 140
 
 typedef struct s_complex {
     double real;
@@ -53,14 +56,19 @@ typedef struct s_data {
 } t_data;
 
 void	move(t_fractal *fractal,double factor ,bool  up_or_down, t_data *data);
-int	get_smooth_color_julia(int iter, double w_re, double w_im, double bailout);
+int 	get_smooth_color_julia(int iter, int max_iter);
+int	ft_strncmp(const char *s1, const char *s2, size_t n);
 double	 map(double value, double from_min, double from_max, double to_min, double to_max);
+double	ft_atof(const char *str);
+void	init_julia(t_data *data, const char *s1, const char *s2);
 int 	get_smooth_color_limit(int iter, double z_re, double z_im);
 int	get_smooth_color_basic(int iter, double z_re, double z_im);
 int	get_smooth_color_pow(int iter, double z_re, double z_im);
 void	swift_color(t_fractal *fractal,  t_data *data);
 void	move_slide(t_fractal *fractal,double factor ,bool  up_or_down, t_data *data);
 int	get_smooth_color(int iter, double z_re, double z_im);
+int	exit_err(t_data *data);
+void	ft_message(void);
 int	track_mouse(int x, int y, t_data *data);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 int	check_key(t_fractal *fractal, int keycode, t_data *data);

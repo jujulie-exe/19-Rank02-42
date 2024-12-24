@@ -71,18 +71,23 @@ int	exit_err(t_data *data)
 }
 
 
-int	main() 
+int	main(int argc, char **argv)
 {
 	t_data data;
 	t_fractal fractal;
 	
 	init_fra(&fractal);
 	init_data(&data, &fractal);
-	if (fractal.julia == true)
-		draw_julia(&fractal, &data, fractal.real, fractal.imag);
+	if(argc == 2 && !ft_strncmp(argv[1], "mandelbrot", 5) || argc == 4 && !ft_strncmp(argv[1], "julia", 5))
+	{
+		if (!ft_strncmp(argv[1], "julia", 5))
+			init_julia(&data, argv[2], argv[3]);
+		else
+			draw_mandelbrot(&fractal, &data);
+	}
 	else
-		draw_mandelbrot(&fractal, &data);
-	//mlx_hook(data.win, 6, (1L<<6), track_mouse,&data);
+		ft_message();
+	mlx_hook(data.win, 6, (1L<<6), track_mouse,&data);
 	mlx_hook(data.win, 4, (1L<<2), mouse_hook,&data);
 	mlx_hook(data.win, 2, (1L<<0), key_hook,&data);
 	mlx_hook(data.win, 17, (1L<<2), exit_err,&data);

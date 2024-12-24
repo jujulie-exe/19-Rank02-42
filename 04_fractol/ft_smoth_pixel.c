@@ -1,8 +1,12 @@
 
 #include "fractol.h"
-int get_smooth_color_julia(int iter, double w_re, double w_im)
+int get_smooth_color_julia(int iter, int max_iter)
 {
-
+    double t = (double)iter / (double)max_iter;
+    int red = (int)(9 * (1 - t) * t * t * t * 255);
+    int green = (int)(15 * (1 - t) * (1 - t) * t * t * 255);
+    int blue = (int)(8.5 * (1 - t) * (1 - t) * (1 - t) * t * 255);
+    return (red << 16) | (green << 8) | blue;
 }
 
 int get_smooth_color_pow(int iter, double z_re, double z_im) {

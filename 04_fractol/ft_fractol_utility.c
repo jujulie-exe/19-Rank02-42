@@ -102,7 +102,7 @@ void	draw_julia(t_fractal *fractal, t_data  *data, double c_re, double c_im)
 		{
 			calulate_complex_coords(x, y, fractal, &z_re, &z_im, aspect_ratio);
 			iter = julia(z_re, z_im, c_re, c_im);
-			color = get_smooth_color_julia(iter, z_re, z_im, 1);
+			color = get_smooth_color_julia(iter, MAX_ITER);
 			my_mlx_pixel_put(data, x, y, color);
 			x++;
 		}

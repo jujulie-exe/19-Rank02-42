@@ -78,7 +78,7 @@ int	main(int argc, char **argv)
 	
 	init_fra(&fractal);
 	init_data(&data, &fractal);
-	if(argc == 2 && !ft_strncmp(argv[1], "mandelbrot", 5) || argc == 4 && !ft_strncmp(argv[1], "julia", 5))
+	if ((argc == 2 && !ft_strncmp(argv[1], "mandelbrot", 5)) || (argc == 4 && !ft_strncmp(argv[1], "julia", 5)))
 	{
 		if (!ft_strncmp(argv[1], "julia", 5))
 			init_julia(&data, argv[2], argv[3]);
@@ -90,7 +90,7 @@ int	main(int argc, char **argv)
 	mlx_hook(data.win, 6, (1L<<6), track_mouse,&data);
 	mlx_hook(data.win, 4, (1L<<2), mouse_hook,&data);
 	mlx_hook(data.win, 2, (1L<<0), key_hook,&data);
-	mlx_hook(data.win, 17, (1L<<2), exit_err,&data);
+	mlx_hook(data.win, 17, (0), exit_err,&data);
 	mlx_loop(data.mlx);
 	return 0;
 }

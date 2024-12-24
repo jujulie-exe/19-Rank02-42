@@ -30,6 +30,12 @@ void	init_fra(t_fractal *fractal)
 	fractal->min_im = -2.0;
 	fractal->max_im = 2.0;
 	fractal->zoom = 1.0;
+	fractal->real = -0.8;
+	fractal->imag = 0.2;
+	fractal->julia = true;
+	fractal->shift_x = 0;
+	fractal->shift_y = 0;
+	fractal->get_smooth_color = get_smooth_color; 
 }
 
 void	init_data(t_data *data, t_fractal *fractal)
@@ -50,10 +56,13 @@ int	main()
 	
 	init_fra(&fractal);
 	init_data(&data, &fractal);
-	draw_mandelbrot(&fractal, &data);
-//    	draw_julia(&fractal, &data, -0.8, 0.2);
-	//mlx_hook(data.win, 4, (1L<<2), mouse_hook,&data);
-	//mlx_hook(data.win, 2, (1L<<0), key_hook,&data);
+	if (fractal.julia == true)
+		draw_julia(&fractal, &data, fractal.real, fractal.imag);
+	else
+		draw_mandelbrot(&fractal, &data);
+	mlx_hook(data.win, 6, (1L<<6), track_mouse,&data);
+	mlx_hook(data.win, 4, (1L<<2), mouse_hook,&data);
+	mlx_hook(data.win, 2, (1L<<0), key_hook,&data);
 	//mlx_hook(data.win, 17, (1L<<2), mouse_hook,&data);
 	mlx_loop(data.mlx);
 	return 0;

@@ -12,7 +12,7 @@
 NAME = fractol
 
 CC = cc
-CFLAGS = -g3 -Wall -Wextra -Werror
+CFLAGS = -g3 -Wall -Wextra -Werror -lm
 
 SRCS = main.c ft_fractol_utility.c ft_fractol_init.c ft_formula.c ft_smoth_pixel.c ft_hook_control.c
 LIB = -Lminilibx -lmlx_Linux -L/usr/lib -lXext -lX11 -lm -lz

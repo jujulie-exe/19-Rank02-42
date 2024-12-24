@@ -21,19 +21,34 @@ int	mouse_hook(int button,int x, int y, t_data *data)
 	}
 	return (0);
 }
+int track_mouse(int x, int y, t_data *data)
+{
+    const double attenuation_factor = 0.001; // Valore tra 0 e 1 per ridurre la velocità di cambiamento
+    double target_real;
+    double target_imag;
+	target_real = (map(x, 0, WIDTH, data->fractal->min_re, data->fractal->max_re) * data->fractal->zoom)  + data->fractal->shift_x;
+	target_imag = (map(y, 0, HEIGHT, data->fractal->min_im, data->fractal->max_im) * data->fractal->zoom) + data->fractal->shift_y;
+    target_real += data->fractal->zoom; // Aggiungi shift_x se necessario
+    target_imag += data->fractal->zoom; // Aggiungi shift_y se necessario
+    data->fractal->real += (target_real - data->fractal->real) * attenuation_factor;
+    data->fractal->imag += (target_imag - data->fractal->imag) * attenuation_factor;
+    draw_julia(data->fractal, data, data->fractal->real, data->fractal->imag);
+
+    return (0);
+}
 
 int	check_key(t_fractal *fractal, int keycode, t_data *data)
 {
-	if (keycode == 4)
-	{
-		zoom(fractal, 0.9, false, data);
-		return (1);
-	}
-	else if (keycode == 5)
-	{
-		zoom(fractal, 0.9, true, data);
-		return (1);
-	}
+	if (keycode == 65364)
+		move(fractal, 0.2, false, data);
+	else if (keycode == 65362)
+		move(fractal, 0.2, true, data);
+	else if (keycode == 65361)
+		move_slide(fractal, 0.01, false, data);
+	else if (keycode == 65363)
+		move_slide(fractal, 0.01, true, data);
+	else if (keycode == 114)
+		swift_color(fractal, data);
 	return (0);
 
 }

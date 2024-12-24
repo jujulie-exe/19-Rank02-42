@@ -1,48 +1,8 @@
 
 #include "fractol.h"
-int get_smooth_color_julia(int iter, double w_re, double w_im, double bailout)
+int get_smooth_color_julia(int iter, double w_re, double w_im)
 {
-    // Calcoliamo la magnitudine di w (modulo complesso)
-    double w2 = w_re * w_re + w_im * w_im;
 
-    // Se la magnitudine supera il valore di bailout, il punto non appartiene al frattale (quindi è nero)
-    if (w2 > bailout * bailout)
-        return 0x000000;  // Colore nero per i punti che non appartengono al frattale
-
-    // Estimazione della distanza in base a w2 e d2
-    double d2 = 1.0;  // Inizializzazione di d2 (può essere affinato)
-    double d = sqrt(w2 / d2) * log(w2);  // Stima della distanza
-
-    // Applicazione della fineness per regolare la sfumatura del colore
-    float dist = (sqrt(d * pow(2, 2)));  // Regolazione della distanza per la colorazione
-
-    // Calcoliamo la proporzione di iterazioni rispetto al numero massimo di iterazioni
-    double t = (double)iter / MAX_ITER;  // Proporzione di iterazioni
-	if (iter == 75)
-		return 0x333333;
-
-    // Calcolo del colore basato sul valore di t (iterazioni)
-    int r = (int)(9 * (1 - t) * t * 255);
-    int g = (int)(15 * (1 - t) * t * t * 255);
-    int b = (int)(8.5 * (1 - t) * t * t * t * 255);
-
-    // Regolazione dei colori in base alla distanza stimata (per aggiungere variazione)
-    r = (int)(r * (1.0 + dist));  // Aumenta l'intensità del rosso in base alla distanza
-    g = (int)(g * (1.0 + dist));  // Aumenta l'intensità del verde in base alla distanza
-    b = (int)(b * (1.0 + dist));  // Aumenta l'intensità del blu in base alla distanza
-
-    // Assicurarsi che i colori non diventino troppo scuri, impostiamo una soglia minima
-    r = (r < 50) ? 50 : r;
-    g = (g < 50) ? 50 : g;
-    b = (b < 50) ? 50 : b;
-
-    // Normalizzazione dei colori per non superare il valore massimo di 255
-    r = (r > 255) ? 255 : r;
-    g = (g > 255) ? 255 : g;
-    b = (b > 255) ? 255 : b;
-
-    // Restituisce il colore in formato 0xRRGGBB
-    return (r << 16) | (g << 8) | b;
 }
 
 int get_smooth_color_pow(int iter, double z_re, double z_im) {

@@ -36,19 +36,35 @@ int track_mouse(int x, int y, t_data *data)
 
     return (0);
 }
+double get_shift_factor(t_fractal *fractal)
+{
+	double factor;
+	factor = 0.001 * pow(0.9, fractal->zoom);
+	return (factor);
+}
 
 int	check_key(t_fractal *fractal, int keycode, t_data *data)
 {
 	if (keycode == 65364)
-		move(fractal, 0.2, false, data);
+		move(fractal, 0.9, false, data);
 	else if (keycode == 65362)
-		move(fractal, 0.2, true, data);
+		move(fractal, 0.9, true, data);
 	else if (keycode == 65361)
-		move_slide(fractal, 0.01, false, data);
+		move_slide(fractal, 0.9, false, data);
 	else if (keycode == 65363)
-		move_slide(fractal, 0.01, true, data);
+		move_slide(fractal, 0.9, true, data);
 	else if (keycode == 114)
 		swift_color(fractal, data);
+	else if (keycode == 119)
+		move(fractal, get_shift_factor(fractal), false, data);
+	else if (keycode == 115)
+		move(fractal, get_shift_factor(fractal), true, data);
+	else if (keycode == 100)
+		move_slide(fractal, get_shift_factor(fractal), true, data);
+	else if (keycode == 97)
+		move_slide(fractal, get_shift_factor(fractal), false, data);
+	else if (keycode == 65307)
+		exit_err(data);
 	return (0);
 
 }

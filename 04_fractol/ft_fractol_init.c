@@ -32,9 +32,13 @@ void	zoom(t_fractal *fractal, double factor, bool check, t_data *data)
 void	move(t_fractal *fractal,double factor ,bool  up_or_down, t_data *data)
 {
 	if (up_or_down == true)
+	{
 		fractal->shift_y += factor;
+	}
 	if (up_or_down == false)
+	{
 		fractal->shift_y -= factor;
+	}
 	chose_render(data, fractal);
 }
 
@@ -42,9 +46,13 @@ void	move(t_fractal *fractal,double factor ,bool  up_or_down, t_data *data)
 void	move_slide(t_fractal *fractal,double factor ,bool  up_or_down, t_data *data)
 {
 	if (up_or_down == true)
+	{
 		fractal->shift_x += factor;
+	}
 	if (up_or_down == false)
+	{
 		fractal->shift_x -= factor;
+	}
 	chose_render(data, fractal);
 }
 

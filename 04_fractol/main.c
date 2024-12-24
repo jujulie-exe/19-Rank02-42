@@ -32,7 +32,7 @@ void	init_fra(t_fractal *fractal)
 	fractal->zoom = 1.0;
 	fractal->real = -0.8;
 	fractal->imag = 0.2;
-	fractal->julia = true;
+	fractal->julia = false;
 	fractal->shift_x = 0;
 	fractal->shift_y = 0;
 	fractal->get_smooth_color = get_smooth_color; 
@@ -48,6 +48,28 @@ void	init_data(t_data *data, t_fractal *fractal)
 
 }
 
+int	exit_err(t_data *data)
+{
+	if (data->img)
+	{
+		mlx_destroy_image(data->mlx, data->img);
+		data->img = NULL;
+	}
+	if (data->win)
+	{
+		mlx_destroy_window(data->mlx, data->win);
+		data->win = NULL;
+	}
+	if (data->mlx)
+		mlx_destroy_display(data->mlx);
+	if (data->mlx)
+	{
+		free(data->mlx);
+		data->mlx = NULL;
+	}
+	exit (0);
+}
+
 
 int	main() 
 {
@@ -60,10 +82,10 @@ int	main()
 		draw_julia(&fractal, &data, fractal.real, fractal.imag);
 	else
 		draw_mandelbrot(&fractal, &data);
-	mlx_hook(data.win, 6, (1L<<6), track_mouse,&data);
+	//mlx_hook(data.win, 6, (1L<<6), track_mouse,&data);
 	mlx_hook(data.win, 4, (1L<<2), mouse_hook,&data);
 	mlx_hook(data.win, 2, (1L<<0), key_hook,&data);
-	//mlx_hook(data.win, 17, (1L<<2), mouse_hook,&data);
+	mlx_hook(data.win, 17, (1L<<2), exit_err,&data);
 	mlx_loop(data.mlx);
 	return 0;
 }

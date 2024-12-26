@@ -25,7 +25,14 @@
 #  define MAX_ITER 140
 # endif
 
-# include "fractol_include.h"
+# include <math.h>
+# include <stdlib.h>
+# include <stdbool.h>
+# include <unistd.h>
+# include <stdio.h>
+# include <limits.h>
+# include <ctype.h>
+# include "minilibx/mlx.h"
 
 typedef struct s_complex
 {

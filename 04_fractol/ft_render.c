@@ -16,55 +16,34 @@ double map(double value, double from_min, double from_max, double to_min, double
 	return (value - from_min) / (from_max - from_min) * (to_max - to_min) + to_min;
 }
 
-/*void	calulate_complex_coords(int x, int y, t_fractal *fractal, double *c_re, double *c_im, double aspect_ratio)
-{	
-	*c_re = (map(x, 0, WIDTH, fractal->min_re, fractal->max_re) * fractal->zoom)  + fractal->shift_x;
-	*c_im = (map(y, 0, HEIGHT, fractal->min_im, fractal->max_im) * fractal->zoom) + fractal->shift_y;
-	if (aspect_ratio > 1.0)
-		*c_im /= aspect_ratio;
-	else if (aspect_ratio < 1)
-		*c_re *= aspect_ratio;
-}*/
-void calulate_complex_coords(int x, int y, t_fractal *fractal, double *c_re, double *c_im, double aspect_ratio)
+void calulate_complex_coords(int x, int y, t_data *data, double aspect_ratio)
 {
-    // Calcolare la posizione del mouse (o della parte dello schermo) nel piano complesso
-    *c_re = map(x, 0, WIDTH, fractal->min_re, fractal->max_re);
-    *c_im = map(y, 0, HEIGHT, fractal->min_im, fractal->max_im);
-
-    // Applicare lo zoom
-    *c_re = (*c_re - fractal->shift_x) * fractal->zoom + fractal->shift_x;
-    *c_im = (*c_im - fractal->shift_y) * fractal->zoom + fractal->shift_y;
-
-    // Gestione dell'aspect ratio per mantenere proporzioni corrette
+    data->c_re = map(x, 0, WIDTH, data->fractal->min_re, data->fractal->max_re);
+    data->c_im = map(y, 0, HEIGHT, data->fractal->min_im, data->fractal->max_im);
+    data->c_re = (data->c_re - data->fractal->shift_x) * data->fractal->zoom + data->fractal->shift_x;
+    data->c_im = (data->c_im - data->fractal->shift_y) * data->fractal->zoom + data->fractal->shift_y;
     if (aspect_ratio > 1.0)
-        *c_im /= aspect_ratio;
+        data->c_im /= aspect_ratio;
     else if (aspect_ratio < 1.0)
-        *c_re *= aspect_ratio;
+        data->c_re *= aspect_ratio;
 }
 
-void	draw_pixel(t_data *data, int x, int y, double c_re, double c_im)
+void	draw_pixel(t_data *data, int x, int y)
 {
 	double z_re;
 	double z_im;
 	int color;
 	z_re = 0;
 	z_im = 0;
-	int iter = mandelbrot(c_re, c_im, &z_re, &z_im);
+	int iter = mandelbrot(data->c_re, data->c_im, &z_re, &z_im);
 	color = data->fractal->get_smooth_color(iter, z_re, z_im);
-
-/*	if (iter == MAX_ITER)
-		color = 0x000000;
-	else
-		color = (iter * 0xFFFFFF) / MAX_ITER; */
  	my_mlx_pixel_put(data, x, y, color);	
 }
-void	draw_mandelbrot(t_fractal *fractal, t_data *data)
+void	draw_mandelbrot(t_data *data)
 {
 	int	x;
 	int	y;
 	double	aspect_ratio;
-	double	c_re;
-	double	c_im;
 
 	aspect_ratio = (double) WIDTH / (double)HEIGHT;
 	x = 0;
@@ -74,8 +53,8 @@ void	draw_mandelbrot(t_fractal *fractal, t_data *data)
 		x = 0;
 		while (x < WIDTH)
 		{
-			calulate_complex_coords(x, y, fractal, &c_re, &c_im, aspect_ratio);
-			draw_pixel(data, x, y, c_re, c_im);
+			calulate_complex_coords(x, y, data, aspect_ratio);
+			draw_pixel(data, x, y);
 			x++;
 		}
 		y++;
@@ -83,7 +62,7 @@ void	draw_mandelbrot(t_fractal *fractal, t_data *data)
 	}
 }
 
-void	draw_julia(t_fractal *fractal, t_data  *data, double c_re, double c_im)
+void	draw_julia(t_data  *data)
 {
 	int	x;
 	int	y;
@@ -100,8 +79,8 @@ void	draw_julia(t_fractal *fractal, t_data  *data, double c_re, double c_im)
 		x = 0;
 		while(x < WIDTH)
 		{
-			calulate_complex_coords(x, y, fractal, &z_re, &z_im, aspect_ratio);
-			iter = julia(z_re, z_im, c_re, c_im);
+			calulate_complex_coords(x, y, data, aspect_ratio);
+			iter = julia(z_re, z_im, data->c_re, data->c_im);
 			color = get_smooth_color_julia(iter, MAX_ITER);
 			my_mlx_pixel_put(data, x, y, color);
 			x++;

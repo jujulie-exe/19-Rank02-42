@@ -13,18 +13,20 @@
 #include "fractol.h"
 #include <stdio.h>
 
-void    my_mlx_pixel_put(t_data *data, int x, int y, int color) {
-    if (x >= 0 && x < WIDTH && y >= 0 && y < HEIGHT) {
-        char    *dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-        *(unsigned int*)dst = color;
-    }
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
+{
+	char	*dst;
+
+	if (x >= 0 && x < WIDTH && y >= 0 && y < HEIGHT)
+	{
+		dst = data->addr + (y * data->line_length
+				+ x * (data->bits_per_pixel / 8));
+		*(unsigned int *)dst = color ;
+	}
 }
-
-
 
 void	init_fra(t_fractal *fractal)
 {
-
 	fractal->min_re = -2.0;
 	fractal->max_re = 2.0;
 	fractal->min_im = -2.0;
@@ -35,7 +37,7 @@ void	init_fra(t_fractal *fractal)
 	fractal->julia = false;
 	fractal->shift_x = 0;
 	fractal->shift_y = 0;
-	fractal->get_smooth_color = get_smooth_color; 
+	fractal->get_smooth_color = get_smooth_color;
 }
 
 void	init_data(t_data *data, t_fractal *fractal)
@@ -43,9 +45,11 @@ void	init_data(t_data *data, t_fractal *fractal)
 	data->mlx = mlx_init();
 	data->win = mlx_new_window(data->mlx, WIDTH, HEIGHT, "Mandelbrot Set");
 	data->img = mlx_new_image(data->mlx, WIDTH, HEIGHT);
-	data->addr = mlx_get_data_addr(data->img, &data->bits_per_pixel, &data->line_length, &data->endian);
+	data->addr = mlx_get_data_addr(data->img,
+			&data->bits_per_pixel,
+			&data->line_length,
+			&data->endian);
 	data->fractal = fractal;
-
 }
 
 int	exit_err(t_data *data)
@@ -70,15 +74,15 @@ int	exit_err(t_data *data)
 	exit (0);
 }
 
-
 int	main(int argc, char **argv)
 {
-	t_data data;
-	t_fractal fractal;
-	
+	t_data		data;
+	t_fractal	fractal;
+
 	init_fra(&fractal);
 	init_data(&data, &fractal);
-	if ((argc == 2 && !ft_strncmp(argv[1], "mandelbrot", 5)) || (argc == 4 && !ft_strncmp(argv[1], "julia", 5)))
+	if ((argc == 2 && !ft_strncmp(argv[1], "mandelbrot", 10))
+		|| (argc == 4 && !ft_strncmp(argv[1], "julia", 5)))
 	{
 		if (!ft_strncmp(argv[1], "julia", 5))
 			init_julia(&data, argv[2], argv[3]);
@@ -87,10 +91,10 @@ int	main(int argc, char **argv)
 	}
 	else
 		ft_message();
-	mlx_hook(data.win, 6, (1L<<6), track_mouse,&data);
-	mlx_hook(data.win, 4, (1L<<2), mouse_hook,&data);
-	mlx_hook(data.win, 2, (1L<<0), key_hook,&data);
-	mlx_hook(data.win, 17, (0), exit_err,&data);
+	mlx_hook(data.win, 6, (1L << 6), track_mouse, &data);
+	mlx_hook(data.win, 4, (1L << 2), mouse_hook, &data);
+	mlx_hook(data.win, 2, (1L << 0), key_hook, &data);
+	mlx_hook(data.win, 17, (0), exit_err, &data);
 	mlx_loop(data.mlx);
-	return 0;
+	return (0);
 }

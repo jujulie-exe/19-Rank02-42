@@ -1,12 +1,11 @@
-#include <limits.h>
-#include <stdlib.h>
-#include <stdio.h> // Solo per debug, rimuovere se non necessario.
-#include <ctype.h>
-#include <float.h> // Per valori massimi e minimi di double.
+
+#include "fractol.h"
 
 size_t	skip_whitespace(const char *str)
 {
-	size_t	i = 0;
+	size_t	i;
+
+	i = 0;
 	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
 		i++;
 	return (i);
@@ -14,7 +13,9 @@ size_t	skip_whitespace(const char *str)
 
 int	get_sign(const char *str, size_t *i)
 {
-	int	sign = 1;
+	int	sign;
+
+	sign = 1;
 	if (str[*i] == '-')
 	{
 		sign = -1;
@@ -25,32 +26,41 @@ int	get_sign(const char *str, size_t *i)
 	return (sign);
 }
 
+double	get_result(int sign, const char *str, size_t *i)
+{
+	double		result;
+	double		fraction;
+	double		divisor;
+
+	result = 0.0;
+	fraction = 0.0;
+	while (str[*i] != '\0' && str[*i] >= '0' && str[*i] <= '9')
+	{
+		result = result * 10.0 + (str[*i] - '0');
+		(*i)++;
+	}
+	if (str[*i] == '.')
+	{
+		divisor = 10.0;
+		(*i)++;
+		while (str[*i] != '\0' && str[*i] >= '0' && str[*i] <= '9')
+		{
+			fraction += (str[*i] - '0') / divisor;
+			divisor *= 10.0;
+			(*i)++;
+		}
+	}
+	return ((result + fraction) * sign);
+}
+
 double	ft_atof(const char *str)
 {
 	size_t		i;
 	double		result;
-	double		fraction;
 	int			sign;
 
 	i = skip_whitespace(str);
 	sign = get_sign(str, &i);
-	result = 0.0;
-	fraction = 0.0;
-	while (str[i] != '\0' && str[i] >= '0' && str[i] <= '9')
-	{
-		result = result * 10.0 + (str[i] - '0');
-		i++;
-	}
-	if (str[i] == '.')
-	{
-		double divisor = 10.0;
-		i++;
-		while (str[i] != '\0' && str[i] >= '0' && str[i] <= '9')
-		{
-			fraction += (str[i] - '0') / divisor;
-			divisor *= 10.0;
-			i++;
-		}
-	}
-	return (result + fraction) * sign;
+	result = get_result(sign, str, &i);
+	return (result);
 }

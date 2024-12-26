@@ -34,10 +34,15 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 
 void	ft_message(void)
 {
-	write(1, "Error: Missing or invalid argument.\n", 36);
+	write(1,
+		"Error: Missing or invalid argument.\n",
+		36);
 	write(1, "Usage: ./fractol [mandelbrot | julia [real] [imaginary]]\n", 57);
-	write(1,"Please specify either 'mandelbrot' or 'julia' as the argument.\n", 63);
-	write(1, "For Julia set, the maximum valid range for real and imaginary parts is [-2.0, 2.0].\n", 84);
+	write(1,
+		"Please specify either 'mandelbrot' or 'julia' as the argument.\n",
+		63);
+	write(2, "For Julia set, the maximum valid range for ", 43);
+	write(1, "real and imaginary parts is [-2.0, 2.0].\n", 41);
 	exit(0);
 }
 
@@ -45,15 +50,17 @@ void	init_julia(t_data *data, const char *s1, const char *s2)
 {
 	data->fractal->julia = true;
 	data->fractal->real = ft_atof(s1);
-	if(data->fractal->real < -2.0 || data->fractal->real > 2.0)
+	if (data->fractal->real < -2.0 || data->fractal->real > 2.0)
 	{
-		write(1, "Error: Imaginary part (%f) out of range. Valid range is [-2.0, 2.0].\n", 69);
+		write(1, "Error: Imaginary part (%f)", 26);
+		write(1, " out of range. Valid range is [-2.0, 2.0].\n", 43);
 		exit (0);
 	}
 	data->fractal->imag = ft_atof(s2);
-	if(data->fractal->imag < -2.0 || data->fractal->imag > 2.0)
+	if (data->fractal->imag < -2.0 || data->fractal->imag > 2.0)
 	{
-		write(1, "Error: Real part (%f) out of range. Valid range is [-2.0, 2.0].\n", 64);
+		write(1, "Error: Real part (%f)", 21);
+		write(1, " out of range. Valid range is [-2.0, 2.0].\n", 43);
 		exit(0);
 	}
 	data->fractal->zoom = 0.63;

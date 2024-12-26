@@ -13,14 +13,14 @@
 #include "fractol.h"
 #include <stdio.h>
 
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
+void	my_mlx_pixel_put(t_data *data, t_info *info, int color)
 {
 	char	*dst;
 
-	if (x >= 0 && x < WIDTH && y >= 0 && y < HEIGHT)
+	if (info->x >= 0 && info->x < WIDTH && info->y >= 0 && info->y < HEIGHT)
 	{
-		dst = data->addr + (y * data->line_length
-				+ x * (data->bits_per_pixel / 8));
+		dst = data->addr + (info->y * data->line_length
+				+ info->x * (data->bits_per_pixel / 8));
 		*(unsigned int *)dst = color ;
 	}
 }

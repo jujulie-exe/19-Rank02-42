@@ -22,41 +22,6 @@ int	mouse_hook(int button, int x, int y, t_data *data)
 	return (0);
 }
 
-/*int	track_mouse(int x, int y, t_data *data)
-{
-	static int	frame_counter = 0;
-	const int	debounce_frame = 45;
-	const double	attenuation_factor;
-	double		target_real;
-	double		target_imag;
-
-	if (data->fractal->julia == true)
-	{
-		attenuation_factor = 0.001 * pow(0.9, data->fractal->zoom);
-		target_real = (map(x, 0, WIDTH, data->fractal->min_re,
-					data->fractal->max_re)
-				* data->fractal->zoom) + data->fractal->shift_x;
-		target_imag = (map(y, 0, HEIGHT, data->fractal->min_im,
-					data->fractal->max_im)
-				* data->fractal->zoom) + data->fractal->shift_y;
-		target_real += data->fractal->zoom + data->fractal->shift_x;
-		target_imag += data->fractal->zoom + data->fractal->shift_y;
-		data->fractal->real += (target_real - data->fractal->real)
-			* attenuation_factor;
-		data->fractal->imag += (target_imag - data->fractal->imag)
-			* attenuation_factor;
-		frame_counter++;
-		if (frame_counter >= debounce_frame)
-		{
-			draw_julia(data->fractal, data,
-					data->fractal->real,
-					data->fractal->imag);
-			frame_counter = 0;
-		}
-	}
-	return (0);
-}*/
-
 double	get_shift_factor(t_fractal *fractal)
 {
 	double	factor;

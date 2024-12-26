@@ -2,17 +2,20 @@
 #include "fractol.h"
 
 void	calculate_target_coordinates(int x, int y,
-		t_data *data,
-		t_complex *target)
+		t_data *data, t_complex *target)
 {
-	target->real = (map(x, 0, WIDTH, data->fractal->min_re,
-				data->fractal->max_re)
-			* data->fractal->zoom) + data->fractal->shift_x;
-	target->imag = (map(y, 0, HEIGHT, data->fractal->min_im,
-				data->fractal->max_im)
-			* data->fractal->zoom) + data->fractal->shift_y;
-	target->real += data->fractal->zoom + data->fractal->shift_x;
-	target->imag += data->fractal->zoom + data->fractal->shift_y;
+	target->real = ((x - 0) / (double)(WIDTH - 0))
+		* (data->fractal->max_re - data->fractal->min_re)
+		+ data->fractal->min_re;
+	target->real = (target->real - data->fractal->shift_x)
+		* data->fractal->zoom
+		+ data->fractal->shift_x;
+	target->imag = ((y - 0) / (double)(HEIGHT - 0))
+		* (data->fractal->max_im - data->fractal->min_im)
+		+ data->fractal->min_im;
+	target->imag = (target->imag - data->fractal->shift_y)
+		* data->fractal->zoom
+		+ data->fractal->shift_y;
 }
 
 void	update_fractal_and_debounce(t_data *data, t_complex *target)
@@ -30,8 +33,8 @@ void	update_fractal_and_debounce(t_data *data, t_complex *target)
 	frame_counter++;
 	if (frame_counter >= debounce_frame)
 	{
-		draw_julia(data->fractal, data,
-			data->fractal->real, data->fractal->imag);
+		draw_julia(data->fractal, data, data->fractal->real,
+			data->fractal->imag);
 		frame_counter = 0;
 	}
 }

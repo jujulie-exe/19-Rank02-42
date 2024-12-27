@@ -32,7 +32,7 @@
 # include <stdio.h>
 # include <limits.h>
 # include <ctype.h>
-# include "minilibx/mlx.h"
+# include "../minilibx/mlx.h"
 
 typedef struct s_complex
 {

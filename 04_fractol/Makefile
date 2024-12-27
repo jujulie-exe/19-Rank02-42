@@ -2,12 +2,14 @@ NAME = fractol
 
 # Compiler and flags
 CC = cc
-CFLAGS = -g3 -Wall -Wextra -Werror -Iminilibx
+CFLAGS = -g3 -Wall -Wextra -Werror -Iminilibx -Isrc
 
 # Source files and objects
-SRCS = main.c ft_formula.c ft_smoth_pixel.c ft_hook_control.c ft_usage.c ft_atof.c ft_of_movement.c ft_render.c ft_track_mouse.c
-OBJ_DIR = obj
-OBJ = $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
+SRCS = src/main.c src/ft_formula.c src/ft_smoth_pixel.c src/ft_hook_control.c \
+       src/ft_usage.c src/ft_atof.c src/ft_of_movement.c src/ft_render.c \
+       src/ft_track_mouse.c
+OBJ_DIR = obj/src
+OBJ = $(SRCS:src/%.c=$(OBJ_DIR)/%.o)
 
 # MiniLibX paths
 MINILIBX_DIR = minilibx
@@ -21,6 +23,10 @@ LIB = $(MINILIBX_LIB) -L/usr/lib -lXext -lX11 -lm -lz
 all: $(NAME)
 	@echo "\033[38;5;213m(っ◔◡◔)っ ♥ Ecole 19 | Fractol | Julie ♥\033[0m"
 
+# Create the object directory before compiling
+$(OBJ_DIR):
+	@mkdir -p $(OBJ_DIR)
+
 # Compile MiniLibX only if needed
 minilibx:
 	@echo "\033[38;5;208mCompiling MiniLibX...\033[0m"
@@ -30,16 +36,12 @@ minilibx:
 		echo "MiniLibX already compiled"; \
 	fi
 
-# Create object directory
-$(OBJ_DIR):
-	@mkdir -p $(OBJ_DIR)
-
 # Compile the program
 $(NAME): $(OBJ_DIR) $(OBJ) minilibx
 	$(CC) $(CFLAGS) $(OBJ) $(LIB) -o $(NAME)
 
 # Rule to compile .c into .o
-$(OBJ_DIR)/%.o: %.c
+$(OBJ_DIR)/%.o: src/%.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 # Clean objects and MiniLibX

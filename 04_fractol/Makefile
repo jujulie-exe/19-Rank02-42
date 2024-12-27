@@ -8,7 +8,7 @@ CFLAGS = -g3 -Wall -Wextra -Werror -Iminilibx -Isrc
 SRCS = src/main.c src/ft_formula.c src/ft_smoth_pixel.c src/ft_hook_control.c \
        src/ft_usage.c src/ft_atof.c src/ft_of_movement.c src/ft_render.c \
        src/ft_track_mouse.c
-OBJ_DIR = obj/src
+OBJ_DIR = obj
 OBJ = $(SRCS:src/%.c=$(OBJ_DIR)/%.o)
 
 # MiniLibX paths

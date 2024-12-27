@@ -18,20 +18,24 @@ MINILIBX_INCLUDE = -I$(MINILIBX_DIR)
 LIB = $(MINILIBX_LIB) -L/usr/lib -lXext -lX11 -lm -lz
 
 # Default target
-all: minilibx $(NAME)
+all: $(NAME)
 	@echo "\033[38;5;213m(っ◔◡◔)っ ♥ Ecole 19 | Fractol | Julie ♥\033[0m"
 
-# Compile MiniLibX
+# Compile MiniLibX only if needed
 minilibx:
 	@echo "\033[38;5;208mCompiling MiniLibX...\033[0m"
-	@$(MAKE) -C $(MINILIBX_DIR)
+	@if [ ! -f $(MINILIBX_DIR)/libmlx_Linux.a ] || [ $(MINILIBX_DIR)/mlx.h -nt $(MINILIBX_DIR)/libmlx_Linux.a ]; then \
+		$(MAKE) -C $(MINILIBX_DIR); \
+	else \
+		echo "MiniLibX already compiled"; \
+	fi
 
 # Create object directory
 $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
 
 # Compile the program
-$(NAME): $(OBJ_DIR) $(OBJ)
+$(NAME): $(OBJ_DIR) $(OBJ) minilibx
 	$(CC) $(CFLAGS) $(OBJ) $(LIB) -o $(NAME)
 
 # Rule to compile .c into .o

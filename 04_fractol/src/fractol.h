@@ -6,7 +6,7 @@
 /*   By: jfranco <jfranco@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 15:00:44 by jfranco           #+#    #+#             */
-/*   Updated: 2024/12/21 19:09:15 by jfranco          ###   ########.fr       */
+/*   Updated: 2024/12/27 14:51:58 by jfranco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # endif
 
 # ifndef MAX_ITER
-#  define MAX_ITER 250
+#  define MAX_ITER 50
 # endif
 
 # include <math.h>

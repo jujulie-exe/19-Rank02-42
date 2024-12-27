@@ -22,7 +22,7 @@
 # endif
 
 # ifndef MAX_ITER
-#  define MAX_ITER 140
+#  define MAX_ITER 250
 # endif
 
 # include <math.h>

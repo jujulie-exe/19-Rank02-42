@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_fractol_utility.c                               :+:      :+:    :+:   */
+/*   ft_render.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfranco <jfranco@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 15:39:06 by jfranco           #+#    #+#             */
-/*   Updated: 2024/12/21 18:59:40 by jfranco          ###   ########.fr       */
+/*   Updated: 2024/12/28 14:40:16 by jfranco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,8 @@ void	draw_mandelbrot(t_fractal *fractal, t_data *data)
 			info.x++;
 		}
 		info.y++;
-		mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
 	}
+	mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
 }
 
 void	draw_julia(t_fractal *fractal, t_data *data, double c_re, double c_im)
@@ -84,7 +84,7 @@ void	draw_julia(t_fractal *fractal, t_data *data, double c_re, double c_im)
 			my_mlx_pixel_put(data, &info, color);
 			info.x++;
 		}
-		mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
 		info.y++;
 	}
+	mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
 }

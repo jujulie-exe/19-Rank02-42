@@ -6,7 +6,7 @@
 /*   By: jfranco <jfranco@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 15:21:01 by jfranco           #+#    #+#             */
-/*   Updated: 2024/12/21 19:10:07 by jfranco          ###   ########.fr       */
+/*   Updated: 2024/12/28 13:32:10 by jfranco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,11 +80,11 @@ int	main(int argc, char **argv)
 	t_fractal	fractal;
 
 	init_fra(&fractal);
-	init_data(&data, &fractal);
 	if ((argc == 2 && !ft_strncmp(argv[1], "mandelbrot", 10))
 		|| (argc == 4 && !ft_strncmp(argv[1], "julia", 5)))
 	{
-		if (!ft_strncmp(argv[1], "julia", 5))
+		init_data(&data, &fractal);
+		if (!ft_strncmp(argv[1], "julia", 5) && argc == 4)
 			init_julia(&data, argv[2], argv[3]);
 		else
 			draw_mandelbrot(&fractal, &data);
